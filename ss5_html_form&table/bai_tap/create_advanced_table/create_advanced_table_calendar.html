@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    table
+    {
+      margin: 0 auto;
+      width: auto;
+      /*border: 1px solid black;*/
+      /*border-collapse: collapse;"*/
+    }
+    div
+    {
+      width: 100%;
+      text-align: center;
+    }
+    th
+    {
+      width: 60px;
+      height: 25px;
+      color: white;
+    }
+    .day_red
+    {
+      background-color: red;
+    }
+    .day_yellow
+    {
+      background-color: yellow;
+    }
+    .day_blue
+    {
+      background-color: blue;
+    }
+    .e_day_red
+    {
+      color: red;
+    }
+    .e_day_black
+    {
+      color: black;
+    }
+    .e_day_blue
+    {
+      color: blue;
+    }
+    .number_red, .number_black, .number_blue {
+      width: 60px;
+      height: 40px;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      vertical-align: middle;
+      border: 1px solid black;
+    }
+    .border{
+      border-collapse: collapse;
+      border: 1px solid black;
+    }
+    .number_red { color: red; }
+    .number_black { color: black; }
+    .number_blue { color: blue; }
+
+    .date-cell {
+      font-size: 18px;
+      position: relative;
+    }
+
+    .sub-date {
+      font-size: 8px;
+      position: absolute;
+      right: 10px;
+      bottom: 1px;
+    }
+
+  </style>
+</head>
+<body>
+<div>
+  <h2>Tháng 10 - October</h2>
+  <table >
+
+    <tr>
+      <th class="day_red">C.Nhật</th>
+      <th class="day_yellow">T.Hai</th>
+      <th class="day_yellow">T.Ba</th>
+      <th class="day_yellow">T.Tư</th>
+      <th class="day_yellow">T.Năm</th>
+      <th class="day_yellow">T.Sáu</th>
+      <th class="day_blue">T.Bảy</th>
+    </tr>
+    <tr>
+      <td class="e_day_red">Sun</td>
+      <td class="e_day_black">Mon</td>
+      <td class="e_day_black">Tue</td>
+      <td class="e_day_black">Wed</td>
+      <td class="e_day_black">Thu</td>
+      <td class="e_day_black">Fri</td>
+      <td class="e_day_blue">Sat</td>
+    </tr>
+    <tr class="border">
+      <td class="number_red"></td>
+      <td class="number_black"></td>
+      <td class="number_black"></td>
+      <td class="number_black"></td>
+      <td class="number_black">
+        <div class="date-cell">1<span class="sub-date">13</span></div>
+      </td>
+      <td class="number_black">
+        <div class="date-cell">2<span class="sub-date">14</span></div>
+      </td>
+      <td class="number_blue">
+        <div class="date-cell">3<span class="sub-date">15</span></div>
+      </td>
+    </tr>
+    <tr class="border">
+      <td class="number_red">
+        <div class="date-cell">4<span class="sub-date">16</span></div>
+      </td>
+      <td class="number_black">
+        <div class="date-cell">5<span class="sub-date">17</span></div>
+      </td>
+      <td class="number_black">
+        <div class="date-cell">6<span class="sub-date">18</span></div>
+      </td>
+      <td class="number_black">
+        <div class="date-cell">7<span class="sub-date">19</span></div>
+      </td>
+      <td class="number_black">
+        <div class="date-cell">8<span class="sub-date">20</span></div>
+      </td>
+      <td class="number_black">
+        <div class="date-cell">9<span class="sub-date">21</span></div>
+      </td>
+      <td class="number_blue">
+        <div class="date-cell">10<span class="sub-date">22</span></div>
+      </td>
+    </tr>
+    <tr class="border">
+      <td class="number_red">
+        <div class="date-cell">11<span class="sub-date">23</span></div>
+      </td>
+      <td class="number_black">
+        <div class="date-cell">12<span class="sub-date">24</span></div>
+      </td>
+      <td class="number_black">
+        <div class="date-cell">13<span class="sub-date">25</span></div>
+      </td>
+      <td class="number_black">
+        <div class="date-cell">14<span class="sub-date">26</span></div>
+      </td>
+      <td class="number_black">
+        <div class="date-cell">15<span class="sub-date">27</span></div>
+      </td>
+      <td class="number_black">
+        <div class="date-cell">16<span class="sub-date">28</span></div>
+      </td>
+      <td class="number_blue">
+        <div class="date-cell">17<span class="sub-date">29</span></div>
+      </td>
+    </tr>
+    <tr class="border">
+      <td class="number_red">
+        <div class="date-cell">18<span class="sub-date">1.9</span></div>
+      </td>
+      <td class="number_black">
+        <div class="date-cell">19<span class="sub-date">2</span></div>
+      </td>
+      <td class="number_black">
+        <div class="date-cell">20<span class="sub-date">3</span></div>
+      </td>
+      <td class="number_black">
+        <div class="date-cell">21<span class="sub-date">4</span></div>
+      </td>
+      <td class="number_black">
+        <div class="date-cell">22<span class="sub-date">5</span></div>
+      </td>
+      <td class="number_black">
+        <div class="date-cell">23<span class="sub-date">6</span></div>
+      </td>
+      <td class="number_blue">
+        <div class="date-cell">24<span class="sub-date">7</span></div>
+      </td>
+    </tr>
+    <tr class="border">
+      <td class="number_red">
+        <div class="date-cell">25<span class="sub-date">8</span></div>
+      </td>
+      <td class="number_black">
+        <div class="date-cell">26<span class="sub-date">9</span></div>
+      </td>
+      <td class="number_black">
+        <div class="date-cell">27<span class="sub-date">10</span></div>
+      </td>
+      <td class="number_black">
+        <div class="date-cell">28<span class="sub-date">11</span></div>
+      </td>
+      <td class="number_black">
+        <div class="date-cell">29<span class="sub-date">12</span></div>
+      </td>
+      <td class="number_black">
+        <div class="date-cell">30<span class="sub-date">13</span></div>
+      </td>
+      <td class="number_blue">
+        <div class="date-cell">14<span class="sub-date">14</span></div>
+      </td>
+    </tr>
+
+  </table>
+
+</div>
+
+</body>
+</html>
