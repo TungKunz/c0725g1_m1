@@ -3,8 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        h4{
+            margin-bottom: 0;
+        }
+        .box_big
+        {
+            width: 300px;
+            height: 30px;
+        }
+        .box_small
+        {
+            width: 150px;
+            text-align: center;
+        }
+        div
+        {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
+<form>
+    <h2>Market Research Survey</h2>
+    <p>Please take a few moments to complete this satisfaction survey.</p>
+    <hr>
+    <div>
+        <label for="age">What is your age range</label><br>
+        <select style="width: 300px" id="age">
+            <option value="18-24">18-24</option>
+            <option value="25-34">25-34</option>
+            <option value="34-50">34-50</option>
+            <option value="50+">50+</option>
+        </select>
+    </div>
+    <div>
+        <label for="money">What is your yearly income range</label><br>
+        <select style="width: 300px" id="money">
+            <option value="$0-$25,000">$0-$25,000</option>
+            <option value="$25,001-$50,000">25,001-$50,000</option>
+            <option value="$50,0001-100,000$">50,0001-100,000</option>
+            <option value="$100,000+">$100,000</option>
+        </select>
+    </div>
+    <div>
+        <h4>Gender</h4>
+        <input id="male" type="radio" name="gender" value="male">
+        <label for="male">Male</label><br>
+        <input  id="female" type="radio" name="gender" value="female">
+        <label for="female">Female</label>
+    </div>
+    <div>
+        <h4>Which of the following products have your purchased in the last 2 months. Please check all that apply</h4>
+        <input id="product_1" type="checkbox" name="product_1" value="product_1">
+        <label for="product_1">Product 1</label><br>
+        <input id="product_2" type="checkbox" name="product_2" value="product_2">
+        <label for="product_2">Product 2</label><br>
+        <input id="product_3" type="checkbox" name="product_3" value="product_3">
+        <label for="product_3">Product 3</label><br>
+    </div>
+    <div>
+        <h4>How often would you use our new product?</h4>
+        <input id="daily" type="radio" name="daily" value="daily">
+        <label for="daily">Daily</label><br>
+        <input id="weekly" type="radio" name="daily" value="weekly">
+        <label for="weekly">Weekly</label><br>
+        <input id="monthly" type="radio" name="daily" value="monthly">
+        <label for="monthly">Monthly</label><br>
+    </div>
+    <div>
+        <h4>What would you pay for the new product</h4>
+        <table>
+            <tr>
+                <td>$</td>
+                <td>
+                    <input style="width: 70px" id="dollars" type="number" name="dollars" value="dollars">
+                    <label for="dollars"> </label>
+                </td>
+                <td>.</td>
+                <td>
+                    <input style="width: 30px" id="cent" type="number" name="cent" value="cent">
+                    <label for="cent"> </label>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>Dollars</td>
+                <td></td>
+                <td>cent</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <h4>What features would you like to see in the new product</h4>
+        <textarea name="feedback" rows="4" cols="50"></textarea>
+    </div>
+    <div>
+        <span >Please rate your level of agreement with the following statements</span>
+        <table border="1" style="border-collapse: collapse">
+            <tr>
+                <td class="box_big"></td>
+                <td class="box_small">Strongly Disagree</td>
+                <td class="box_small">Disagree</td>
+                <td class="box_small">Agree</td>
+                <td class="box_small">Strongly Agree</td>
+            </tr>
+            <tr>
+                <td class="box_big">Our products are priced fairly</td>
+                <td class="box_small">
+                    <label style="display: flex; flex-direction: column; align-items: center;">
+                        <input type="radio"  name="point_1" value="1">
+                        1
+                    </label>
+                </td>
+                <td class="box_small">
+                    <label style="display: flex; flex-direction: column; align-items: center;">
+                        <input type="radio"  name="point_1" value="2" >
+                        2
+                    </label>
+                </td>
+                <td class="box_small">
+                    <label style="display: flex; flex-direction: column; align-items: center;       ">
+                        <input type="radio"  name="point_1" value="3">
+                        3
+                    </label>
+                </td><td class="box_small">
+                    <label style="display: flex; flex-direction: column; align-items: center;       ">
+                        <input type="radio"  name="point_1" value="4">
+                        4
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td class="box_big">Our product are high quality</td>
+                <td class="box_small">
+                    <label style="display: flex; flex-direction: column; align-items: center;">
+                        <input type="radio"  name="point_2" value="1">
+                        1
+                    </label>
+                </td>
+                <td class="box_small">
+                    <label style="display: flex; flex-direction: column; align-items: center;">
+                        <input type="radio"  name="point_2" value="2" >
+                        2
+                    </label>
+                </td>
+                <td class="box_small">
+                    <label style="display: flex; flex-direction: column; align-items: center;       ">
+                        <input type="radio"  name="point_2" value="3">
+                        3
+                    </label>
+                </td>
+                <td class="box_small">
+                    <label style="display: flex; flex-direction: column; align-items: center;       ">
+                        <input type="radio"  name="point_2" value="4">
+                       4
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td class="box_big">You would recommend our product to a friend or coworker</td>
+                <td class="box_small">
+                    <label style="display: flex; flex-direction: column; align-items: center;">
+                        <input type="radio"  name="point_3" value="1">
+                        1
+                    </label>
+                </td>
+                <td class="box_small">
+                    <label style="display: flex; flex-direction: column; align-items: center;">
+                        <input type="radio"  name="point_3" value="2" >
+                        2
+                    </label>
+                </td>
+                <td class="box_small">
+                    <label style="display: flex; flex-direction: column; align-items: center;       ">
+                        <input type="radio"  name="point_3" value="3">
+                        3
+                    </label>
+                </td>
+                <td class="box_small">
+                    <label style="display: flex; flex-direction: column; align-items: center;       ">
+                        <input type="radio"  name="point_3" value="4">
+                        4
+                    </label>
+                </td>
+            </tr>
 
+        </table>
+    </div>
+    <div style="margin-left: 100px;margin-top: 50px">
+        <button style="width: 100px; height: 30px;font-size: 20px" type="submit">Submit</button>
+    </div>
+</form>
 </body>
 </html>
