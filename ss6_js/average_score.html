@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 100%;
+            text-align: center;
+            font-size: 20px;
+        }
+        input{
+            height: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    Nhập điểm Toán
+    <input id="math" type="number" value="0">
+    Nhập điểm Lý
+    <input id="physical" type="number" value="0">
+    Nhập điểm Hóa
+    <input id="chemical" type="number" value="0"><br>
+    <button id="mouse" style="width: 100px;height: 50px;font-size: 35px;margin-top: 50px" onclick="calculateAverage()">Tính</button>
+    <p style="font-size: 50px;color: #008cff" id="result"></p>
+</div>
+<script>
+    function calculateAverage(){
+        let math = parseFloat(document.getElementById("math").value);
+        let physical = parseFloat(document.getElementById("physical").value);
+        let chemical = parseFloat(document.getElementById("chemical").value);
+        let average = (math + physical + chemical)/3;
+        document.getElementById("result").innerHTML = 'Kết quả là: ' + average;
+    }
+    let demo = document.getElementById("mouse");
+    demo.addEventListener("mouseover", mouseover);
+    demo.addEventListener("mouseout", mouseout);
+    function mouseover(){
+        document.getElementById("mouse").style.color ="red";
+    }
+    function mouseout(){
+        document.getElementById("mouse").style.color ="black";
+    }
+</script>
+</body>
+</html>
