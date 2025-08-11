@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+    div{
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <h2>Cho anh tiền mua mô hình xe</h2>
+  <button id="yes" type="button" onclick="say('yes')">Có ❤</button>
+  <button id="no" type="button">Không</button>
+</div>
+<script>
+
+  function say(answer){
+    if (answer === 'yes') {
+      alert("Tuyệt vời  ❤ ️");
+    }
+
+  }
+  let demo = document.getElementById("no")
+  demo.addEventListener("mouseover", mouseover);
+  function mouseover(){
+    let button = document.getElementById("no");
+    button.style.position = "absolute";
+    button.style.left = Math.random() * window.innerWidth + "px";
+    button.style.top = Math.random() * window.innerHeight + "px";
+  }
+
+
+</script>
+</body>
+</html>
