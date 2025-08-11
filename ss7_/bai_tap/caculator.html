@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+  <h2>Caculator</h2>
+  <input type="number" name="number1" id="number1">
+  <input type="number" name="number2" id="number2"><br>
+  <button onclick="calculate('addition')">Add</button>
+  <button onclick="calculate('subtraction')">Subtract</button>
+  <button onclick="calculate('multiplication')">Multiply</button>
+  <button onclick="calculate('division')">Divide</button>
+  <p id="result"></p>
+</div>
+<script>
+  function calculate(operation) {
+    let number1 = parseFloat(document.getElementById("number1").value);
+    let number2 = parseFloat(document.getElementById("number2").value);
+    let result;
+
+    switch (operation) {
+      case "addition":
+        result = number1 + number2;
+        break;
+      case "subtraction":
+        result = number1 - number2;
+        break;
+      case "multiplication":
+        result = number1 * number2;
+        break;
+      case "division":
+        if (number2 === 0) {
+          document.getElementById("result").innerHTML = "Cannot divide by zero";
+        } else {
+          let result = number1 / number2;
+          document.getElementById("result").innerHTML = `Result Division: ${result}`;
+        }
+        break;
+      default:
+        result = "Invalid operation";
+    }
+
+    document.getElementById("result").innerHTML = `Result ${operation}: ${result}`;
+  }
+
+
+</script>
+</body>
+</html>
