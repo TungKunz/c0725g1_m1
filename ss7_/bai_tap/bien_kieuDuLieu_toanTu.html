@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <div>
+        <h3>Bài 1</h3>
+        <label for="m">Nhập điểm toán</label>
+        <input id="m" type="number">
+        <label for="c">Nhập điểm hóa</label>
+        <input id="c" type="number">
+        <label for="p">Nhập điểm lý</label>
+        <input id="p" type="number">
+        <button onclick="avg()">Tính</button>
+        <p id="resultBai1"></p>
+    </div>
+    <div>
+        <h3>Bài 2</h3>
+        <label for="temperature"></label>
+        <input id="temperature" type="number">
+        <button onclick="changeTemperature()">Đổi nhiệt độ</button>
+        <p id="resultBai2"></p>
+    </div>
+    <div>
+        <h3>Bài 3</h3>
+        <label for="banKinh">Nhâập bán kính</label>
+        <input id="banKinh" type="number">
+        <button onclick="dienTich()">Tính diện tích</button>
+        <button onclick="chuVi()">Tính chu vi</button>
+        <p id="resultBai3"></p>
+        <p id="resultBai4"></p>
+    </div>
+</div>
+</body>
+<script>
+    //Bài 1:
+    function avg(){
+        let m= parseFloat(document.getElementById("m").value);
+        let c= parseFloat(document.getElementById("c").value);
+        let p= parseFloat(document.getElementById("p").value);
+        let avg = (m+c+p)/3;
+        document.getElementById("resultBai1").innerHTML=`Kết qủa là: ${avg}`;
+    }
+    //Bài 2:
+    function changeTemperature(){
+        let temp=parseFloat(document.getElementById("temperature").value);
+        let change = temp * 9 / 5 +32;
+        document.getElementById("resultBai2").innerHTML=`Kết quả là: ${change}`;
+    }
+    //Bài 3
+    function dienTich()
+    {
+        const pi=3.14;
+        let r= parseFloat(document.getElementById("banKinh").value);
+        let s= r * r * pi;
+        document.getElementById("resultBai3").innerHTML=`Kết quả là: ${s}`;
+    }
+    //Bài 4
+    function chuVi()
+    {
+        const pi=3.14;
+        let r= parseFloat(document.getElementById("banKinh").value);
+        let s= 2 * pi * r;
+        document.getElementById("resultBai4").innerHTML=`Kết quả là: ${s}`;
+    }
+</script>
+</html>
