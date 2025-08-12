@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let option = +prompt("Nhập '1': đổi từ m->feet ; Nhập '2': đổi từ feet -> m ");
+  if (option === 1){
+    let m = +prompt("Nhập m: ");
+    if (m >=0){
+      alert("m -> feet: " + m * 3.2808);
+    }
+    else {
+      alert("Nhập sai mời nhập lại");
+    }
+  }
+  else if (option === 2) {
+    let f = +prompt("Nhập feet: ");
+    if (f>=0){
+      alert("feet -> m " + f / 3.2808);
+    }
+    else {
+      alert("Nhập sai mời nhập lại");
+    }
+  }
+  else {
+    alert("Nhập sai mời nhập lại");
+  }
+</script>
+</body>
+</html>

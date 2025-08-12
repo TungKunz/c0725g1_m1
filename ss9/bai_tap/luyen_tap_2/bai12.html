@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let money= +prompt("Nhập số tiền ban đầu ");
+  let month = +prompt("Nhập số tháng gửi tiền ");
+  let total;
+
+  if (month <= 3) {
+    total = money * 1.5;
+  } else if (month <= 6) {
+    total = 3 * 1.5 + (month - 6) * 1.7;
+  } else if (month <= 12) {
+    total = 3 * 1.5 + 6 * 1.7 + (month - 12) * 2;
+  } else {
+    total = 3 * 1.5 + 6 * 1.7 + 12 * 2 + (month - 12) * 2.5 ;
+  }
+
+  alert("Tổng tiền: " + total + " VND");
+</script>
+</body>
+</html>

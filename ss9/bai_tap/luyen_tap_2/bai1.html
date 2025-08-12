@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let option= +prompt("Nhập 1: Đổi từ C->F ;  Nhập 2: Đổi từ F->C ");
+  switch (option){
+    case 1:
+      let c= +prompt("Nhập độ C: ");
+      alert(c * 9 /5 + 32);
+      break;
+    case 2:
+      let f= +prompt("Nhập độ F: ");
+      alert((f- 32) * 5 / 9);
+      break;
+    default:
+      alert("Nhập sai mời nhập lại");
+  }
+</script>
+</body>
+</html>

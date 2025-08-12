@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let baiKiemTra = +prompt("Nhập bài kiểm tra: ");
+  let baiThiGiuaKy = +prompt("Nhập bài thi giữa kì: ");
+  let baiThiCuoiKy = +prompt("Nhập bài thi cuối kì: ");
+  let score = baiKiemTra * 0.2 + baiThiGiuaKy * 0.3 + baiThiCuoiKy * 0.5;
+  if (score >= 8.5){
+    alert("Giỏi");
+  }
+  else if (score >=7){
+    alert("Khá");
+  }
+  else if (score >=5){
+    alert("Trung bình");
+  }
+  else {
+    alert("Yếu");
+  }
+</script>
+</body>
+</html>
