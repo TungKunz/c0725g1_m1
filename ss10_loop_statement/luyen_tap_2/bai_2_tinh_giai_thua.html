@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let n;
+    do {
+        n = +prompt("Nhập số nguyên dương bạn muốn tính giai thừa");
+    } while (n <= 0);
+    let giaiThua = 1;
+    while (n > 0) {
+        giaiThua *= n;
+        n--;
+    }
+    alert(giaiThua);
+
+
+</script>
+</body>
+</html>

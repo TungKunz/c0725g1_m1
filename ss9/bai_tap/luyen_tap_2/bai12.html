@@ -13,11 +13,11 @@
   if (month <= 3) {
     total = money * 1.5;
   } else if (month <= 6) {
-    total = 3 * 1.5 + (month - 6) * 1.7;
+    total = 3 * money * 1.5 + (month - 6)* money * 1.7;
   } else if (month <= 12) {
-    total = 3 * 1.5 + 6 * 1.7 + (month - 12) * 2;
+    total = 3 * money * 1.5 + (month - 6)* money * 1.7 + (month - 12)* money * 2;
   } else {
-    total = 3 * 1.5 + 6 * 1.7 + 12 * 2 + (month - 12) * 2.5 ;
+    total = 3 * money * 1.5 + (month - 6)* money * 1.7 + (month - 12)* money * 2 + (month - 12) * money * 2.5 ;
   }
 
   alert("Tổng tiền: " + total + " VND");

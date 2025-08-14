@@ -5,22 +5,20 @@
     <title>Title</title>
 </head>
 <body>
-
 <script>
-    let a = +prompt("Nhập số lượng bạn muốn in ra: ");
-
-    function fibonaci(n) {
-        if (n === 1) {
-            document.writeln("0")
-        } else if (n === 2) {
-            document.writeln("0<br>1");
+    let a = +prompt("Nhập số lượng dãy fibonacci bạn muốn in ra");
+    function dayFibonacci(number) {
+        if (number === 1) {
+            document.writeln("0");
+        } else if (number === 2) {
+            document.writeln("0 <br> 1");
         } else {
             let a = 0;
             let b = 1;
+            let tong = 0;
             document.writeln(a + "<br>");
             document.writeln(b + "<br>");
-            let tong;
-            for (let i = 3; i <= n; i++) {
+            for (let i = 3; i <=number; i++) {
                 tong = a + b;
                 document.writeln(tong + "<br>");
                 a = b;
@@ -28,7 +26,7 @@
             }
         }
     }
-    fibonaci(a);
+    dayFibonacci(a);
 </script>
 </body>
 </html>
