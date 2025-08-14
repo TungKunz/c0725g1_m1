@@ -6,23 +6,23 @@
 </head>
 <body>
 <script>
-    let numbers=+prompt("Nhập n");
-    let count=0;
-    let n=2
-    while (count<numbers){
-        if(checkSNT(n) === true){
+    let numbers = +prompt("Nhập n");
+    let count = 0;
+    let n = 2
+    while (count < numbers) {
+        if (checkSNT(n) === true) {
             document.writeln(`${n} <br>`);
-            count+=1;
+            count += 1;
         }
-        n+=1;
+        n += 1;
     }
-    function checkSNT(a)
-    {
-        if(a<2){
+
+    function checkSNT(a) {
+        if (a < 2) {
             return false;
         }
-        for (let i=2;i<=a/2;i++){
-            if(a%i===0){
+        for (let i = 2; i <= Math.sqrt(a); i++) {
+            if (a % i === 0) {
                 return false;
             }
         }

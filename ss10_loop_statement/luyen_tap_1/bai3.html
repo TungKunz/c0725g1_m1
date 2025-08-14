@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let a = +prompt("Nhập số lượng bạn muốn in ra: ");
+
+    function fibonaci(n) {
+        if (n === 1) {
+            document.writeln("0")
+        } else if (n === 2) {
+            document.writeln("0<br>1");
+        } else {
+            let a = 0;
+            let b = 1;
+            document.writeln(a + "<br>");
+            document.writeln(b + "<br>");
+            let tong;
+            for (let i = 3; i <= n; i++) {
+                tong = a + b;
+                document.writeln(tong + "<br>");
+                a = b;
+                b = tong;
+            }
+        }
+    }
+
+    fibonaci(a);
+</script>
+</body>
+</html>

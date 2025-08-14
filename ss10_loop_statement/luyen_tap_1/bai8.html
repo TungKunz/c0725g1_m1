@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="nutDoan" onclick="doanSo()">Đoán số nào</button>
+<script>
+    function doanSo() {
+        let number = +prompt("bạn muốn đoán trong khoảng nào?")
+        let so = Math.floor(Math.random() * number) + 1;
+        let duDoan = +prompt("Nhập số mà bạn dự đoán");
+        let dem = 0;
+        while (true) {
+            if (dem === 3) {
+                alert("Bạn đã hết lượt đoán");
+                //Thay nút button bằng thẻ <p>
+                let nut = document.getElementById("nutDoan");
+                let thongBao = document.createElement("p");
+                thongBao.textContent = "Bạn đã hết lượt đoán. Trò chơi kết thúc!";
+                nut.parentNode.replaceChild(thongBao, nut);
+                break;
+            }
+            if (so === duDoan) {
+                alert("Bingo");
+                break;
+            }
+            if (duDoan > so) {
+                alert("Số bạn dự đoán lớn hơn số randm");
+                dem++;
+            } else {
+                alert("Số bạn dự đoán bé hơn số random");
+                dem++
+            }
+            duDoan = +prompt("Nhập lại số bạn muốn đoán")
+        }
+    }
+</script>
+</body>
+</html>

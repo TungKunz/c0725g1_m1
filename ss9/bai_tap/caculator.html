@@ -3,106 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0;
-    }
-  div{
-    text-align: center;
-  }
-  </style>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        div {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<div >
+<div>
     <div>
-      <label for="input"></label>
-      <input id="input">
+        <label for="input"></label>
+        <input id="input">
     </div>
     <div>
-      <table>
-        <tr>
-          <td>
-            <button type="button" value="1" name="so" onclick="inputValue(this.value)">1</button>
-          </td>
-          <td>
-            <button type="button" value="2" name="so" onclick="inputValue(this.value)">2</button>
-          </td>
-          <td>
-            <button type="button" value="3" name="so" onclick="inputValue(this.value)">3</button>
-          </td>
-          <td>
-            <input type="button" value="+" name="phepTinh" onclick="inputValue(this.value)"/>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <button type="button" value="4" name="so" onclick="inputValue(this.value)">4</button>
-          </td>
-          <td>
-            <button type="button" value="5" name="so" onclick="inputValue(this.value)">5</button>
-          </td>
-          <td>
-            <button type="button" value="6" name="so" onclick="inputValue(this.value)">6</button>
-          </td>
-          <td>
-            <button type="button" value="-" name="phepTinh" onclick="inputValue(this.value)">-</button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <button type="button" value="7" name="so" onclick="inputValue(this.value)">7</button>
-          </td>
-          <td>
-            <button type="button" value="8" name="so" onclick="inputValue(this.value)">8</button>
-          </td>
-          <td>
-            <button type="button" value="9" name="so" onclick="inputValue(this.value)">9</button>
-          </td>
-          <td>
-            <button type="button" value="*" name="phepTinh" onclick="inputValue(this.value)">*</button>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <button type="button" value="C" name="so" onclick="xoa()">C</button>
-          </td>
-          <td>
-            <button type="button" value="0" name="so" onclick="inputValue(this.value)">0</button>
-          </td>
-          <td>
-            <button type="button" value="=" name="result" onclick="result()">=</button>
-          </td>
-          <td>
-            <button type="button" value="/" name="phepTinh" onclick="inputValue(this.value)">/</button>
-          </td>
-        </tr>
-      </table>
+        <table>
+            <tr>
+                <td>
+                    <button type="button" value="1" name="so" onclick="inputValue(this.value)">1</button>
+                </td>
+                <td>
+                    <button type="button" value="2" name="so" onclick="inputValue(this.value)">2</button>
+                </td>
+                <td>
+                    <button type="button" value="3" name="so" onclick="inputValue(this.value)">3</button>
+                </td>
+                <td>
+                    <input type="button" value="+" name="phepTinh" onclick="inputValue(this.value)"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" value="4" name="so" onclick="inputValue(this.value)">4</button>
+                </td>
+                <td>
+                    <button type="button" value="5" name="so" onclick="inputValue(this.value)">5</button>
+                </td>
+                <td>
+                    <button type="button" value="6" name="so" onclick="inputValue(this.value)">6</button>
+                </td>
+                <td>
+                    <button type="button" value="-" name="phepTinh" onclick="inputValue(this.value)">-</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" value="7" name="so" onclick="inputValue(this.value)">7</button>
+                </td>
+                <td>
+                    <button type="button" value="8" name="so" onclick="inputValue(this.value)">8</button>
+                </td>
+                <td>
+                    <button type="button" value="9" name="so" onclick="inputValue(this.value)">9</button>
+                </td>
+                <td>
+                    <button type="button" value="*" name="phepTinh" onclick="inputValue(this.value)">*</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" value="C" name="so" onclick="xoa()">C</button>
+                </td>
+                <td>
+                    <button type="button" value="0" name="so" onclick="inputValue(this.value)">0</button>
+                </td>
+                <td>
+                    <button type="button" value="=" name="result" onclick="result()">=</button>
+                </td>
+                <td>
+                    <button type="button" value="/" name="phepTinh" onclick="inputValue(this.value)">/</button>
+                </td>
+            </tr>
+        </table>
     </div>
 </div>
 </body>
 <script>
-  function inputValue(thisValue) {
-    let input = document.getElementById("input");
-    input.value += thisValue;
-  }
-
-  function result() {
-    let input = document.getElementById("input");
-    try {
-      let result;
-      result = eval(input.value);
-      input.value = result;
-    } catch (error) {
-      input.value = "Lỗi!";
+    function inputValue(thisValue) {
+        let input = document.getElementById("input");
+        input.value += thisValue;
     }
-  }
 
-  function xoa() {
-    document.getElementById("input").value = "";
-  }
+    function result() {
+        let input = document.getElementById("input");
+        try {
+            let result;
+            result = eval(input.value);
+            input.value = result;
+        } catch (error) {
+            input.value = "Lỗi!";
+        }
+    }
+
+    function xoa() {
+        document.getElementById("input").value = "";
+    }
 </script>
 
 </html>

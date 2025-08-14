@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+</head>
+<body>
+<div>
+    <div>
+        <input id="good" type="range" min="0" max="1">
+        <label for="good">Good</label>
+    </div>
+    <div>
+        <input id="fast" type="range" min="0" max="1">
+        <label for="fast">Fast</label>
+    </div>
+    <div>
+        <input id="cheap" type="range" min="0" max="1">
+        <label for="cheap">Cheap</label>
+    </div>
+</div>
+</body>
+<script>
+    let good = document.getElementById("good");
+    let fast = document.getElementById("fast");
+    let cheap = document.getElementById("cheap");
+
+    function clickGFC() {
+        if (good.value === "1" && fast.value === "1") {
+            cheap.value = "0";
+        } else if (fast.value === "1" && cheap.value === "1") {
+            good.value = "0";
+        } else if (good.value === "1" && cheap.value === "1") {
+            fast.value = "0";
+        }
+    }
+
+    good.addEventListener("input", clickGFC);
+    fast.addEventListener("input", clickGFC);
+    cheap.addEventListener("input", clickGFC);
+</script>
+
+</html>

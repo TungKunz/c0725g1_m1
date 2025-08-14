@@ -5,37 +5,36 @@
     <title>Title</title>
 </head>
 <body>
-  <label for="month"></label>
-  <input id="month" type="number"><br>
-  <button onclick="inputMonth()">Tính số ngày</button>
-  <p id="result"></p>
+<label for="month"></label>
+<input id="month" type="number"><br>
+<button onclick="inputMonth()">Tính số ngày</button>
+<p id="result"></p>
 </body>
 <script>
-  function inputMonth(){
-    let month = Number(document.getElementById("month").value);
-    if(month >= 1 && month <= 12){
-      switch (month){
-        case 1:
-        case 3:
-        case 5:
-        case 7:
-        case 8:
-        case 10:
-        case 12:
-          document.getElementById("result").innerHTML =`Tháng ${month} có 31 ngày`;
-          break;
-        case 2:
-          document.getElementById("result").innerHTML =`Tháng ${month} có 28 hoặc 29 ngày`;
-          break;
-        default:
-          document.getElementById("result").innerHTML =`Tháng ${month} có 30 ngày`;
-          break;
-      }
-    }
-    else {
-      document.getElementById("result").innerHTML= "Bạn đã nhập sai, mời nhập lại";
-    }
+    function inputMonth() {
+        let month = Number(document.getElementById("month").value);
+        if (month >= 1 && month <= 12) {
+            switch (month) {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    document.getElementById("result").innerHTML = `Tháng ${month} có 31 ngày`;
+                    break;
+                case 2:
+                    document.getElementById("result").innerHTML = `Tháng ${month} có 28 hoặc 29 ngày`;
+                    break;
+                default:
+                    document.getElementById("result").innerHTML = `Tháng ${month} có 30 ngày`;
+                    break;
+            }
+        } else {
+            document.getElementById("result").innerHTML = "Bạn đã nhập sai, mời nhập lại";
+        }
 
-  }
+    }
 </script>
 </html>

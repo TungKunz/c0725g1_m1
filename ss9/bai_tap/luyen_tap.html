@@ -1,130 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <title>Title</title>
-  <style>
-    form {
-      width: 300px;
-      padding: 10px;
-      background-color: lightgray;
-    }
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <style>
+        form {
+            width: 300px;
+            padding: 10px;
+            background-color: lightgray;
+        }
 
-    div {
-      margin-top: 20px;
-      width: 250px;
-      display: flex;
-      justify-content: space-between;
-    }
+        div {
+            margin-top: 20px;
+            width: 250px;
+            display: flex;
+            justify-content: space-between;
+        }
 
-    h2 {
-      margin-left: 110px;
-    }
+        h2 {
+            margin-left: 110px;
+        }
 
-    p {
-      text-align: center;
-      font-size: 12px;
-      color: red;
-      margin-top: 0px;
-    }
+        p {
+            text-align: center;
+            font-size: 12px;
+            color: red;
+            margin-top: 0px;
+        }
 
-    button {
-      background-color: gray;
-      border: 1px solid yellow;
-      color: white;
-    }
+        button {
+            background-color: gray;
+            border: 1px solid yellow;
+            color: white;
+        }
 
-    div span {
-      color: green;
-    }
+        div span {
+            color: green;
+        }
 
-    #idCross {
-      color: red;
-    }
+        #idCross {
+            color: red;
+        }
 
-    #nameCross {
-      color: red;
-    }
+        #nameCross {
+            color: red;
+        }
 
-    #ageCross {
-      color: red;
-    }
-  </style>
+        #ageCross {
+            color: red;
+        }
+    </style>
 </head>
 <body>
 <form>
-  <h2>Đăng ký</h2>
-  <div>
-    <label for="id">ID</label>
-    <input id="id" name="id" onblur="checkValidate()"/>
-    <span id="idTick"></span>
-    <span id="idCross"></span>
-  </div>
-  <p id="idError"></p>
-  <div>
-    <label for="name">name</label>
-    <input id="name" name="name" onblur="checkValidate()"/>
-    <span id="nameTick"></span>
-    <span id="nameCross"></span>
-  </div>
-  <p id="nameError"></p>
-  <div>
-    <label for="age">Age</label>
-    <input id="age" name="age" onblur="checkValidate()"/>
-    <span id="ageTick"></span>
-    <span id="ageCross"></span>
-  </div>
-  <p id="ageError"></p>
-  <div style="justify-content: center">
-    <button disabled type="submit" id="btn-save">Save</button>
-  </div>
+    <h2>Đăng ký</h2>
+    <div>
+        <label for="id">ID</label>
+        <input id="id" name="id" onblur="checkValidate()"/>
+        <span id="idTick"></span>
+        <span id="idCross"></span>
+    </div>
+    <p id="idError"></p>
+    <div>
+        <label for="name">name</label>
+        <input id="name" name="name" onblur="checkValidate()"/>
+        <span id="nameTick"></span>
+        <span id="nameCross"></span>
+    </div>
+    <p id="nameError"></p>
+    <div>
+        <label for="age">Age</label>
+        <input id="age" name="age" onblur="checkValidate()"/>
+        <span id="ageTick"></span>
+        <span id="ageCross"></span>
+    </div>
+    <p id="ageError"></p>
+    <div style="justify-content: center">
+        <button disabled type="submit" id="btn-save">Save</button>
+    </div>
 </form>
 <script>
-  function checkValidate() {
+    function checkValidate() {
 
-    let id = document.getElementById("id").value;
-    let name = document.getElementById("name").value;
-    let age = document.getElementById("age").value;
-    let kiemTra=true;
+        let id = document.getElementById("id").value;
+        let name = document.getElementById("name").value;
+        let age = document.getElementById("age").value;
+        let kiemTra = true;
 
-    if(id===""){
-      document.getElementById("idTick").innerHTML = ``;
-      document.getElementById("idCross").innerHTML = `X`;
-      document.getElementById("idError").innerHTML = `Lỗi id`;
-      kiemTra=false;
-    }
-    else {
-      document.getElementById("idTick").innerHTML = `V`;
-      document.getElementById("idCross").innerHTML = ``;
-      document.getElementById("idError").innerHTML = ``;
-    }
-    if(name===""){
-      document.getElementById("nameTick").innerHTML = ``;
-      document.getElementById("nameCross").innerHTML = `X`;
-      document.getElementById("nameError").innerHTML = `Lỗi name`;
-      kiemTra=false;
-    }
-    else {
-      document.getElementById("nameTick").innerHTML = `V`;
-      document.getElementById("nameCross").innerHTML = ``;
-      document.getElementById("nameError").innerHTML = ``;
-    }
-    if (age===""){
-      document.getElementById("ageTick").innerHTML = ``;
-      document.getElementById("ageCross").innerHTML = `X`;
-      document.getElementById("ageError").innerHTML = `Lỗi age`;
-      kiemTra=false;
-    }
-    else {
-      document.getElementById("ageTick").innerHTML = `V`;
-      document.getElementById("ageError").innerHTML = ``
-      document.getElementById("ageCross").innerHTML = ``;
+        if (id === "") {
+            document.getElementById("idTick").innerHTML = ``;
+            document.getElementById("idCross").innerHTML = `X`;
+            document.getElementById("idError").innerHTML = `Lỗi id`;
+            kiemTra = false;
+        } else {
+            document.getElementById("idTick").innerHTML = `V`;
+            document.getElementById("idCross").innerHTML = ``;
+            document.getElementById("idError").innerHTML = ``;
+        }
+        if (name === "") {
+            document.getElementById("nameTick").innerHTML = ``;
+            document.getElementById("nameCross").innerHTML = `X`;
+            document.getElementById("nameError").innerHTML = `Lỗi name`;
+            kiemTra = false;
+        } else {
+            document.getElementById("nameTick").innerHTML = `V`;
+            document.getElementById("nameCross").innerHTML = ``;
+            document.getElementById("nameError").innerHTML = ``;
+        }
+        if (age === "") {
+            document.getElementById("ageTick").innerHTML = ``;
+            document.getElementById("ageCross").innerHTML = `X`;
+            document.getElementById("ageError").innerHTML = `Lỗi age`;
+            kiemTra = false;
+        } else {
+            document.getElementById("ageTick").innerHTML = `V`;
+            document.getElementById("ageError").innerHTML = ``
+            document.getElementById("ageCross").innerHTML = ``;
 
+        }
+        if (kiemTra) {
+            document.getElementById("btn-save").disabled = false;
+        }
     }
-    if(kiemTra){
-      document.getElementById("btn-save").disabled=false;
-    }
-  }
 </script>
 </body>
 </html>

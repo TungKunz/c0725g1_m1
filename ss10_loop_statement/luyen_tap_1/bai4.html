@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function check5() {
+        let kiemTra = true;
+        let a = 0;
+        let b = 1;
+        let tong;
+        while (kiemTra) {
+            tong = a + b;
+            if (tong % 5 === 0) {
+                kiemTra = false;
+                document.writeln(tong);
+            }
+            a = b;
+            b = tong;
+        }
+    }
+
+    check5();
+</script>
+</body>
+</html>
