@@ -24,6 +24,10 @@
             }
             if (so === duDoan) {
                 alert("Bingo");
+                let nut = document.getElementById("nutDoan");
+                let thongBao = document.createElement("p");
+                thongBao.textContent = "Bạn đã đoán đúng nè!";
+                nut.parentNode.replaceChild(thongBao, nut);
                 break;
             }
             if (duDoan > so) {
