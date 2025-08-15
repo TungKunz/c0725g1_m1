@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="hienThiThucDon()">Menu</button>
+<script>
+    function hienThiThucDon() {
+        let choice;
+        let tong = 0;
+        let demCF=0;
+        let demCaCao=0;
+        let demNuocCam=0;
+        let stt=1;
+        let mon=""
+        do {
+            choice = +prompt(
+                "---------- MENU ----------\n" +
+                "Hãy nhập số để chọn đồ uống \n" +
+                "1. Cafe       10k \n" +
+                "2. Cacao      15k \n" +
+                "3. Nước cam   20k \n" +
+                "4. Kết thúc   \n" +
+                "------Danh sách đã chọn------ \n" +
+                `${mon}`+
+                "                     " +
+                "$Tổng tiền:" + tong +"k"
+            );
+            switch (choice) {
+                case 1:
+                    demCF++;
+                    let cafeLine = "Cafe x" + demCF;
+                    if (mon.includes("Cafe")) {
+                        mon = mon.replace(/Cafe x\d+/, cafeLine);
+                    } else {
+                        mon += stt + " " + cafeLine + "\n";
+                        stt++;
+                    }
+                    tong += 10;
+                    break;
+
+                case 2:
+                    demCaCao++;
+                    let caCaoLine = "Cacao x" + demCaCao;
+                    if (mon.includes("Cacao")) {
+                        mon = mon.replace(/Cacao x\d+/, caCaoLine);
+                    } else {
+                        mon += stt + " " + caCaoLine + "\n";
+                        stt++;
+                    }
+                    tong += 15;
+                    break;
+                case 3:
+                    demNuocCam++;
+                    let nuocCamLine = "Nước cam x" + demNuocCam;
+                    if (mon.includes("Nước cam")) {
+                        mon = mon.replace(/Nước cam x\d+/, nuocCamLine);
+                    } else {
+                        mon += stt + " " + nuocCamLine + "\n";
+                        stt++;
+                    }
+                    tong += 15;
+                    break;
+                case 4:
+                    break;
+            }
+
+        } while (choice === 1 || choice === 2 || choice === 3)
+        alert("------Danh sách đã chọn------ \n" +
+            `${mon}`+
+            "                     " +
+            "$Tổng tiền:" + tong +"k")
+    }
+
+</script>
+</body>
+</html>

@@ -6,32 +6,31 @@
 </head>
 <body>
 <script>
-  let month;
-  let money;
-  do{
-    month = +prompt("Nhập số tháng bạn muốn gửi");
-    money = +prompt("Nhập số tiền bạn muốn gửi");
-  }while (month<0 || money<0)
-  tinhLai(month,money)
+    let month;
+    let money;
+    do {
+        month = +prompt("Nhập số tháng bạn muốn gửi");
+        money = +prompt("Nhập số tiền bạn muốn gửi");
+    } while (month < 0 || money < 0)
+    tinhLai(month, money)
 
-  function tinhLai(month,money) {
-    let laiSuat;
-    for (let i=1;i<=month;i++){
-      if( i <= 3){
-        laiSuat=0.1;
-      }else if(i<=6){
-        laiSuat=0.3;
-      }else if (i<=12){
-        laiSuat=0.5;
-      }
-      else {
-        laiSuat=0.7;
-      }
-      money=money+money*laiSuat
+    function tinhLai(month, money) {
+        let laiSuat;
+        for (let i = 1; i <= month; i++) {
+            if (i <= 3) {
+                laiSuat = 0.1;
+            } else if (i <= 6) {
+                laiSuat = 0.3;
+            } else if (i <= 12) {
+                laiSuat = 0.5;
+            } else {
+                laiSuat = 0.7;
+            }
+            money = money + money * laiSuat
+        }
+        alert(money);
+
     }
-    alert(money);
-
-  }
 </script>
 </body>
 </html>
