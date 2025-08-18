@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Đếm số từ</title>
+</head>
+<body>
+<label for="input">Nhập vào chuỗi 1:</label>
+<input id="input" type="text">
+<label for="input_2">Nhập vào chuỗi 2:</label>
+<input id="input_2" type="text">
+<button onclick="soSanhChuoi()">So sánh</button>
+<p id="result"></p>
+
+<script>
+  function soSanhChuoi() {
+    //trim() xóa khoảng trắng đầu và cuối
+    let chuoi_1 = document.getElementById("input").value.trim();
+    let chuoi_2 = document.getElementById("input_2").value.trim();
+    let mangKyTu1=[]
+    chuoi_1 =chuoi_1.split(/\s+/).join("");
+    let mangKyTu2=[]
+    chuoi_2 =chuoi_2.split(/\s+/).join("");
+    for(let i =0;i<chuoi_1.length;i++){
+      mangKyTu1.push(chuoi_1[i]);
+    }
+    for(let i =0;i<chuoi_2.length;i++){
+      mangKyTu2.push(chuoi_2[i]);
+    }
+    mangKyTu1=mangKyTu1.sort();
+    mangKyTu2=mangKyTu2.sort();
+    if (mangKyTu1.join("")===mangKyTu2.join("")){
+      alert("Đúng");
+    }else {
+      alert("Sai");
+    }
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<label for="input">Nhập vào chuỗi</label>
+<input id="input"  type="text">
+<button onclick="demSoKyTuSo()">Đếm</button>
+<p id="result"></p>
+<script>
+  function demSoKyTuSo(){
+    let a=document.getElementById("input").value;
+    let b = a.split("");
+    let dem=0;
+    for (let i = 0; i < b.length; i++) {
+      if (b[i] >= '0' && b[i] <= '9') {
+        dem++;
+      }
+    }
+    document.getElementById("result").innerHTML="Tổng số kí tự số có trong mảng: " + dem;
+  }
+</script>
+</body>
+</html>

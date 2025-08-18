@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Đếm số từ</title>
+</head>
+<body>
+<label for="input">Nhập vào chuỗi 1:</label>
+<input id="input" type="text">
+<button onclick="changeCharacter()">Thay đổi</button>
+<p id="result"></p>
+
+<script>
+  function changeCharacter() {
+    let chuoi = document.getElementById("input").value.trim();
+    let mang = chuoi.split(/\s+/).join("").split("");
+    for(let i=0;i<mang.length;i++){
+      if(mang[i]==="-"){
+        mang[i]="_";
+      }
+    }
+    document.getElementById("result").innerHTML=`${mang.join("")}`;
+  }
+</script>
+</body>
+</html>
