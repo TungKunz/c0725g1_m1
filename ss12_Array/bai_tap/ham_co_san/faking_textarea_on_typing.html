@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .full_div{
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="full_div">
+    <div>
+        <h2>Faking Textarea on Typing</h2>
+    </div>
+    <div>
+        <form>
+            <textarea id="txt" cols="40" rows="20" onkeydown="typeText()"></textarea>
+        </form>
+    </div>
+</div>
+<script>
+    let text="Tôi là một lập trình viên";
+    let index=0;
+    function typeText() {
+        event.preventDefault();
+        let textarea = document.getElementById("txt");
+        if (index < text.length) {
+            textarea.value += text[index];
+            index++;
+        }
+    }
+</script>
+</body>
+</html>

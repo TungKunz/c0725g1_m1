@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body>
+<form id="myForm">
+  <input type="number" id="txtValue"/>
+  <input type="button" id="btnAdd" value="Add" onclick="add_element_to_array();"/>
+  <input type="button" id="btnDisplay" value="Display" onclick="display_array();"/>
+</form>
+<div>
+  <p id="result"></p>
+</div>
+<script>
+  let x=0;
+  let array=[];
+  function add_element_to_array(){
+    let value=document.getElementById("txtValue").value;
+    if(value===""){
+      alert("Giá trị nhập vào không hợp lệ. Vui lòng nhập một số.");
+      document.getElementById("myForm").reset();
+    }else {
+      array[x]=value
+      document.getElementById("result").innerHTML=`Element ${x} = ${array[x]}`;
+      x++;
+      document.getElementById("myForm").reset();
+    }
+  }
+  function display_array() {
+    let e = "<hr/>";
+    let count=0;
+    for (let i = 0; i < array.length; i++) {
+      if(array[i] >=10){
+        e += "Element " + i + " = " + array[i] + "<br/>";
+        count++;
+      }
+    }
+    document.getElementById("result").innerHTML = `${e} Tổng số các số lớn hơn 10 là:   ${count}`;
+  }
+</script>
+</body>
+
+</html>

@@ -15,19 +15,12 @@
         while (true) {
             if (dem === 3) {
                 alert("Bạn đã hết lượt đoán");
-                //Thay nút button bằng thẻ <p>
-                let nut = document.getElementById("nutDoan");
-                let thongBao = document.createElement("p");
-                thongBao.textContent = "Bạn đã hết lượt đoán. Trò chơi kết thúc!";
-                nut.parentNode.replaceChild(thongBao, nut);
+                document.write("Bạn đã hết lượt đoán. Trò chơi kết thúc!");
                 break;
             }
             if (so === duDoan) {
                 alert("Bingo");
-                let nut = document.getElementById("nutDoan");
-                let thongBao = document.createElement("p");
-                thongBao.textContent = "Bạn đã đoán đúng nè!";
-                nut.parentNode.replaceChild(thongBao, nut);
+                document.write("Bạn đã đoán đúng nè")
                 break;
             }
             if (duDoan > so) {

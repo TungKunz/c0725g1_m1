@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Xóa phần tử trong mảng</title>
+</head>
+<body>
+<h3>Chương trình xử lý mảng 10 phần tử</h3>
+<p id="mang"></p>
+<p id="ketqua"></p>
+
+<label for="v">Nhập số nguyên V:</label>
+<input type="number" id="v">
+<button onclick="xuLy()">Kiểm tra & Xóa</button>
+<script>
+    let arr = [];
+    for (let i = 0; i < 10; i++) {
+        arr.push(Math.floor(Math.random() * 20) + 1);
+    }
+    document.getElementById("mang").innerHTML = "Mảng ban đầu: " + arr.join(", ");
+
+    function xuLy() {
+        let v = parseInt(document.getElementById("v").value);
+        let count=0;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === v) {
+                for (let j = i; j < arr.length - 1; j++) {
+                    arr[j] = arr[j + 1];
+                }
+                arr[arr.length - 1] = 0;
+                i--;
+                count++;
+            }
+        }
+        if (count === 0) {
+            document.getElementById("ketqua").innerHTML = "Số " + v + " KHÔNG có trong mảng!";
+        } else {
+            document.getElementById("ketqua").innerHTML =
+                "Đã xóa tất cả " + count + " lần xuất hiện của " + v + ".<br>Mảng sau khi xóa: " + arr.join(", ");
+        }
+    }
+</script>
+</body>
+</html>

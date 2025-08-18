@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="myForm">
+    <label for="input">Nhập số lượng phần tử:</label>
+    <input id="input" type="number">
+    <button type="button" onclick="main()">Nhập mảng</button>
+    <button type="button" onclick="inMang(array)">In mảng</button>
+    <br>
+    <label for="searchNumber">Nhập số bạn muốn tìm:</label>
+    <input id="searchNumber" type="number">
+    <button type="button" onclick="timGiaTri(array,parseInt(document.getElementById('searchNumber').value))">Tìm
+    </button>
+    <p id="inMang"></p>
+    <p id="result"></p>
+</form>
+
+<script>
+    let array = [];
+
+    function nhapMang(n) {
+        for (let i = 0; i < n; i++) {
+            let value = +prompt("Nhập giá trị tại vị trí " + i);
+            array.push(value);
+        }
+    }
+
+    function inMang(arr) {
+        let data = "";
+        for (let i = 0; i < arr.length; i++) {
+            data += `Phần tử ${i} = ${arr[i]}<br>`;
+        }
+        document.getElementById("inMang").innerHTML = data;
+        alert("Đã in xong mảng!!!");
+    }
+
+    function main() {
+        let n = parseInt(document.getElementById("input").value);
+        if (isNaN(n) || n <= 0) {
+            alert("Vui lòng nhập số lượng phần tử > 0!");
+            return;
+        }
+        array = [];
+        nhapMang(n);
+    }
+
+    function timGiaTri(arr, n) {
+        if (arr.length === 0) {
+            return null;
+        }
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === n) {
+                document.getElementById("result").innerHTML = `V is in the array`;
+                return;
+            }
+        }
+        document.getElementById("result").innerHTML = `V is not in the array`;
+    }
+</script>
+</body>
+
+</html>

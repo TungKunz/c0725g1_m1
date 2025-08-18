@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nối hai mảng</title>
+</head>
+<body>
+<h3>Chương trình nối 2 mảng thành mảng c</h3>
+<p id="mangA"></p>
+<p id="mangB"></p>
+<p id="mangC"></p>
+
+<script>
+  let a = [];
+  let b = [];
+  for (let i = 0; i < 10; i++) {
+    a.push(Math.floor(Math.random() * 50) + 1);
+    b.push(Math.floor(Math.random() * 50) + 1);
+  }
+  let c = a.concat(b);
+
+  document.getElementById("mangA").innerHTML = "Mảng a: " + a.join(", ");
+  document.getElementById("mangB").innerHTML = "Mảng b: " + b.join(", ");
+  document.getElementById("mangC").innerHTML = "Mảng c (a+b): " + c.join(", ");
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Xóa phần tử trong mảng</title>
+</head>
+<body>
+<h3>Chương trình xử lý mảng 10 phần tử</h3>
+<p id="mang"></p>
+<p id="ketqua"></p>
+<button onclick="xuLy()">Sắp xếp mảng</button>
+<script>
+  let arr = [];
+  for (let i = 0; i < 10; i++) {
+    arr.push(Math.floor(Math.random() * 20) + 1);
+  }
+  document.getElementById("mang").innerHTML = "Mảng ban đầu: " + arr.join(", ");
+
+  function xuLy() {
+    arr.sort(function (a,b){
+      return b-a;
+    })
+    document.getElementById("ketqua").innerHTML =
+            "Mảng sau khi sắp xếp giảm dần: " + arr.join(", ");
+  }
+</script>
+</body>
+</html>

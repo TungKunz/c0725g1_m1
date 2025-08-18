@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<label for="input">Nhập số lượng phần tử:</label>
+<input id="input" type="number">
+<button onclick="batDau()">Bắt đầu</button>
+<p id="result"></p>
+
+<script>
+    let array = [];
+
+    function nhapMang(n) {
+        for (let i = 0; i < n; i++) {
+            let value = +prompt("Nhập giá trị tại vị trí " + i);
+            array.push(value);
+        }
+    }
+
+    function timMax(arr) {
+        let max = arr[0];
+        for (let i = 1; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+        return max;
+    }
+
+    function batDau() {
+        let n;
+        do{
+            n = parseInt(document.getElementById("input").value);
+        }while (isNaN(n) || n <= 0)
+        array = [];
+        nhapMang(n);
+        document.getElementById("result").innerHTML =
+            `Giá trị max của mảng là: ${timMax(array)}`;
+    }
+</script>
+</body>
+
+</html>

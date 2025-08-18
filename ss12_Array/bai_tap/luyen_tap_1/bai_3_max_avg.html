@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="myForm">
+    <label for="input">Nhập số lượng phần tử:</label>
+    <input id="input" type="number">
+    <button type="button" onclick="main()">Nhập mảng và in mảng</button>
+    <button type="button" onclick="findMaxAvg()">Tìm giá trị lớn nhất và trung bình</button>
+    <p id="inMang"></p>
+    <p id="result"></p>
+</form>
+
+<script>
+    let array = [];
+    function nhapMang(n) {
+        for (let i = 0; i < n; i++) {
+            let value = +prompt("Nhập giá trị tại vị trí " + i);
+            array.push(value);
+        }
+    }
+
+    function inMang(arr) {
+        let data = "";
+        for (let i = 0; i < arr.length; i++) {
+            data += `Phần tử ${i} = ${arr[i]}<br>`;
+        }
+        document.getElementById("inMang").innerHTML = data;
+        alert("Đã in xong mảng!!!");
+    }
+
+    function timMax(arr) {
+        let max = arr[0];
+        if (arr.length === 0) return null;
+        for (let i = 1; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+        return max;
+    }
+
+    function avgArray(arr) {
+        let avg = 0;
+        if (arr.length === 0) return null;
+        for (let i = 0; i < arr.length; i++) {
+            avg += arr[i];
+        }
+        avg /= arr.length;
+        return avg;
+    }
+
+    function main() {
+        let n = parseInt(document.getElementById("input").value);
+        if (isNaN(n) || n <= 0) {
+            alert("Vui lòng nhập số lượng phần tử > 0!");
+            return;
+        }
+        array = [];
+        nhapMang(n);
+        inMang(array);
+    }
+    function findMaxAvg() {
+        if (array.length === 0) {
+            document.getElementById("result").innerHTML = "Mảng rỗng, chưa có dữ liệu!";
+            return;
+        }
+        document.getElementById("result").innerHTML =
+            `Giá trị max của mảng là: ${timMax(array)}<br>
+     Giá trị trung bình của mảng là: ${avgArray(array)}`;
+    }
+</script>
+</body>
+
+</html>

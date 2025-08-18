@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<label for="search">Nhập từ bạn muốn tìm trong từ điển</label>
+<input id="search" type="text">
+<button onclick="searchEnglish()">Tìm</button>
+<p id="result"></p>
+<script>
+  let engLish=["Hello", "Good Bye", "Apple","Banana","Pen","Soccer","Volleyball","Table","Chair"];
+  let tiengViet=["Xin chào","Tạm biệt","Quả táo","Quả chuối","Cây bút","Bóng đá","Bóng chuyển","Cái bàn","Cái ghế"];
+  function searchEnglish(){
+    let timTu=document.getElementById("search").value;
+    let index=-1;
+    for (let i=0;i<engLish.length;i++){
+      if(engLish[i].toLocaleLowerCase()===timTu.toLocaleLowerCase()){
+        index= i ;
+      }
+    }
+    if(index===-1){
+      document.getElementById("result").innerHTML="Không có trong từ điển";
+    }else {
+      document.getElementById("result").innerHTML=`Từ bạn tìm kiếm có nghĩa là: ${tiengViet[index]}`;
+    }
+  }
+</script>
+</body>
+</html>
