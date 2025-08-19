@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Caro 30x30</title>
+</head>
+<body>
+<p id="result"></p>
+<script>
+    let array = new Array(30);
+    let player = true;
+
+    for (let i = 0; i < array.length; i++) {
+        array[i] = new Array(30);
+        for (let j = 0; j < array[i].length; j++) {
+            array[i][j] = "";
+        }
+    }
+
+    playXO();
+
+    function letPlay(i, j) {
+        if (array[i][j] === "") {
+            let mark = player ? "X" : "O";
+            array[i][j] = mark;
+            if (checkWin(i, j, mark)) {
+                alert("Người chơi " + mark + " thắng!");
+            }
+            player = !player;
+            playXO();
+        } else {
+            alert("Ô này đã có người đánh!");
+        }
+    }
+
+    // Vẽ bàn cờ
+    function playXO() {
+        let tableString = `<table border="1" style="border-collapse: collapse">`;
+        for (let i = 0; i < array.length; i++) {
+            tableString += `<tr>`;
+            for (let j = 0; j < array[i].length; j++) {
+                tableString += `<td onclick="letPlay(${i},${j})" style="text-align: center; width: 40px; height: 40px">${array[i][j]}</td>`;
+            }
+            tableString += `</tr>`;
+        }
+        tableString += "</table>";
+        document.getElementById("result").innerHTML = tableString;
+    }
+
+    // Hàm kiểm tra thắng
+    function checkWin(row, col, mark) {
+        return (
+            countLine(row, col, 0, 1, mark) + countLine(row, col, 0, -1, mark) - 1 >= 5 ||
+            countLine(row, col, 1, 0, mark) + countLine(row, col, -1, 0, mark) - 1 >= 5 ||
+            countLine(row, col, 1, 1, mark) + countLine(row, col, -1, -1, mark) - 1 >= 5 ||
+            countLine(row, col, 1, -1, mark) + countLine(row, col, -1, 1, mark) - 1 >= 5
+        );
+    }
+    function countLine(row, col, dx, dy, mark) {
+        let count = 0;
+        let x = row, y = col;
+        while (x >= 0 && y >= 0 && x < array.length && y < array.length && array[x][y] === mark) {
+            count++;
+            x += dx;
+            y += dy;
+        }
+        return count;
+    }
+</script>
+</body>
+</html>

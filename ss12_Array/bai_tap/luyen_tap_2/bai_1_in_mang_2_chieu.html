@@ -5,19 +5,27 @@
     <title>Title</title>
 </head>
 <body>
+<input id="row" type="number">
+<input id="col" type="number">
+<button onclick="creatArray()">Tạo mảng</button>
+<p id="result"></p>
 <script>
   let a=[];
-  for (let i=0;i<3;i++){
-      a[i]=[];
-      for (let j=0;j<4;j++){
-          a[i][j]=Math.floor(Math.random()*200)-100;
+  function creatArray(){
+      let row=parseInt(document.getElementById("row").value);
+      let col=parseInt(document.getElementById("col").value)
+      for (let i=0;i<row;i++){
+          a[i]=[];
+          for (let j=0;j<col;j++){
+              a[i][j]=Math.floor(Math.random()*200)-100;
+          }
       }
-  }
-  for (let i = 0; i < a.length; i++) {
-      document.writeln("row" + i + "<br>");
-      for (let j = 0; j < a[i].length; j++) {
-          document.writeln(`${a[i][j]} <br>`);
+      let output = "";
+      for (let i = 0; i < a.length; i++) {
+          output += "["+ a[i]+ "]"+ "," +"<br>";
       }
+
+      document.getElementById("result").innerHTML = output;
   }
 </script>
 </body>
