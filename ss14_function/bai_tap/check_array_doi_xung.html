@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let input=prompt("Nhập vào chuỗi bạn muốn kiểm tra");
+  if(isPalindrome(input)){
+    alert("True");
+  }else {
+    alert("False");
+  }
+  function isPalindrome(s) {
+    s = s.trim();
+    if (s.length <= 1) {
+      return true;
+    }
+    if (s[0] !== s[s.length - 1]) {
+      return false;
+    }
+    return isPalindrome(s.slice(1, s.length - 1));
+  }
+</script>
+</body>
+</html>
