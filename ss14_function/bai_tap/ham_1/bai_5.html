@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let a=["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe", "Regulus"];
+  let b=["Ursa Minor", "Taurus", "Cygnus", "Lyra", "Aquila", "Ursa Major", "Leo"];
+  let input=prompt("Nhập tên ngôi sao bạn muốn tìm");
+
+  if ( searchName() === -1){
+    document.write("không tìm thấy");
+  }else {
+    document.write(b[ searchName()]);
+  }
+  function searchName(){
+    let index=-1;
+    for (let i = 0; i < a.length; i++) {
+      if(a[i]===input){
+        index=i;
+      }
+    }
+    return index;
+  }
+</script>
+</body>
+</html>
