@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="myForm">
+    <label for="input">Nhập số lượng phần tử:</label>
+    <input id="input" type="number">
+    <button type="button" onclick="main()">Nhập mảng</button>
+    <button type="button" onclick="inMang(array)">In mảng</button>
+    <button type="button" onclick="kiemTra()">Kiểm tra mảng</button>
+    <p id="inMang"></p>
+    <p id="result"></p>
+</form>
+
+<script>
+    let array = [];
+
+    function nhapMang(n) {
+        for (let i = 0; i < n; i++) {
+            let value = +prompt("Nhập giá trị tại vị trí " + i);
+            array.push(value);
+        }
+    }
+
+    function inMang(arr) {
+        let data = "";
+        for (let i = 0; i < arr.length; i++) {
+            data += `Phần tử ${i} = ${arr[i]}<br>`;
+        }
+        document.getElementById("inMang").innerHTML = data;
+        alert("Đã in xong mảng!!!");
+    }
+
+    function main() {
+        let n = parseInt(document.getElementById("input").value);
+        if (isNaN(n) || n <= 0) {
+            alert("Vui lòng nhập số lượng phần tử > 0!");
+            return;
+        }
+        array = [];
+        nhapMang(n);
+    }
+
+    function checkArray(arr) {
+        for (let i = 0; i < arr.length; i++) {
+            let temp = arr[i] % 10;
+            let temp2 = Math.floor(arr[i]/10);
+            if (temp < temp2) {
+                arr.splice(i, 1);
+            }
+        }
+        return arr;
+    }
+
+    function kiemTra() {
+        let ketQua = checkArray(array);
+        document.getElementById("result").innerHTML =
+            "Các phần tử có chữ số hàng đơn vị lớn hơn hàng chục là: " + ketQua.join(", ");
+    }
+</script>
+</body>
+
+</html>

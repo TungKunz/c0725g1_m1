@@ -5,6 +5,7 @@
     <title>Caro 30x30</title>
 </head>
 <body>
+<button onclick="playXO()">click</button>
 <p id="result"></p>
 <script>
     let array = new Array(30);
@@ -16,8 +17,6 @@
             array[i][j] = "";
         }
     }
-
-    playXO();
 
     function letPlay(i, j) {
         if (array[i][j] === "") {
@@ -33,7 +32,6 @@
         }
     }
 
-    // Vẽ bàn cờ
     function playXO() {
         let tableString = `<table border="1" style="border-collapse: collapse">`;
         for (let i = 0; i < array.length; i++) {
@@ -46,8 +44,6 @@
         tableString += "</table>";
         document.getElementById("result").innerHTML = tableString;
     }
-
-    // Hàm kiểm tra thắng
     function checkWin(row, col, mark) {
         return (
             countLine(row, col, 0, 1, mark) + countLine(row, col, 0, -1, mark) - 1 >= 5 ||

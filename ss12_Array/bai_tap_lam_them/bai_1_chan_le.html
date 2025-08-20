@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mảng</title>
+</head>
+<body>
+<h3>Chương trình kiểm tra</h3>
+<p id="mang"></p>
+<p id="ketqua"></p>
+<button onclick="xuLy()">Kiểm tra</button>
+<script>
+    let arr = [];
+    let demChan = 0;
+    let demLe = 0;
+    for (let i = 0; i < 20; i++) {
+        arr.push(Math.floor(Math.random() * 20) + 1);
+    }
+    document.getElementById("mang").innerHTML = "Mảng ban đầu: " + arr.join(", ");
+
+    function xuLy() {
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 === 0) {
+                demChan++;
+            } else {
+                demLe++;
+            }
+        }
+        if (demChan === demLe) {
+            alert("ok");
+        } else {
+            alert("không");
+        }
+    }
+</script>
+</body>
+</html>
