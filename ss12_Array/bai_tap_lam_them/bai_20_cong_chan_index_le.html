@@ -2,9 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  let array=[]
+  function randomArray(){
+    for (let i = 0; i <10;i++){
+      array.push(Math.floor(Math.random()*100));
+    }
+  }
+  randomArray();
+  function sumArrayIndex(arr){
+    let total=0;
+    for (let i = 1; i < arr.length; i+=2) {
+      if(arr[i]%2===0){
+        total+=arr[i];
+      }
+    }
+    return total;
+  }
+  alert(sumArrayIndex(array));
+</script>
 </body>
 </html>

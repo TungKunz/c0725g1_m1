@@ -16,13 +16,21 @@
             background: linear-gradient(to right, #2980B9, #6DD5FA);
             color: #FFFFFF
         }
-        .header{
+        .header {
             font-size: 30px;
             text-align: center;
             width: 600px;
             font-family: "Playfair Display", serif;
-
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3s steps(30) forwards;
         }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 600px; }
+        }
+
         table {
             width: 600px;
             height: 20px;
@@ -80,12 +88,42 @@
         .red-color {
             color:red;
         }
-        .input{
+        .input-box {
+            position: relative;
             width: 250px;
-            height: 30px;
+            margin: 20px auto;
+        }
+
+        .input {
+            width: 100%;
+            height: 40px;
             border-radius: 50px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ccc;
+            padding: 10px 15px;
+            font-size: 16px;
             outline: none;
+            background: transparent;
+        }
+
+        .input-box label {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            color: gray;
+            pointer-events: none;
+            transition: 0.3s ease;
+        }
+
+        .input:focus + label,
+        .input:not(:placeholder-shown) + label {
+            top: -5px;
+            left: 10px;
+            font-size: 12px;
+            color: #0f9b0f;
+            background: white;
+            padding: 0 5px;
+            border-radius: 4px;
         }
         .divAddHeader{
             width: 600px;
@@ -94,9 +132,31 @@
         #addBtn{
             color: #0f9b0f;
             border-radius: 70% 30% 70% 30% / 30% 70% 30% 70% ;
+            position: relative;
+            z-index: 1;
+
+        }
+        #addBtn::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            right: 50%;
+            opacity: 0;
+            z-index: -1;
+            background: aqua;
+            transition: .5s all ease;
+            border-radius: 70% 30% 70% 30% / 30% 70% 30% 70% ;
+
         }
         #addBtn:hover{
-            color: #0c7a0c;
+            color: #ffffff;
+        }
+        #addBtn:hover:before{
+            left: 0;
+            right: 0;
+            opacity: 1;
         }
         #saveBtn{
             color: #cc7a00;
@@ -134,8 +194,11 @@
     <div class="divAddHeader">
         <h3 id="header_add" class="header" style="display: inline-block">Add New Product</h3>
         <h3 id="header_edit" class="header" style="display: none">Edit Product</h3><br>
-        <label for="input"></label>
-        <input id="input" class="input" type="text" placeholder="Nhập tên sản phẩm">
+        <div class="input-box">
+            <input id="input" class="input" type="text" required placeholder=" ">
+            <label for="input">Nhập tên sản phẩm</label>
+        </div>
+
         <button id="addBtn" onclick="addProduct()">ADD</button>
         <button id="saveBtn" onclick="saveProduct()"
                 style="display:none;border-radius: 70% 30% 70% 30% / 30% 70% 30% 70%  ">SAVE

@@ -2,9 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  let array=[1,"a",11,12,13,14]
+  function checkNumber(x) {
+    return !isNaN(Number(x));
+  }
+  function checkArray(arr) {
+    for (let i = 0; i < arr.length; i++) {
+      if(!checkNumber(arr[i])){
+        return false;
+      }
+    }
+    return true;
+  }
+
+    if (array.length === 0) {
+      alert("Mảng đang rỗng, hãy nhập dữ liệu trước!");
+    }
+    let ketQua = checkArray(array);
+    if(ketQua===true){
+      document.write("true");
+    }else {
+      document.write("false");
+    }
+
+</script>
 </body>
+
 </html>

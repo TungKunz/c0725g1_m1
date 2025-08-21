@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    let number = +prompt("Nhập số bạn muốn đổi sang số nhị phân");
+
+    function changeBinary(num) {
+        if (num === 0) return "0";
+        let binary = "";
+        while (num > 0) {
+            binary = (num % 2) + binary;
+            num = Math.floor(num / 2);
+        }
+        if (binary.length<3){
+            binary="00" + binary;
+        }
+        return binary;
+    }
+
+    alert(changeBinary(number));
+</script>
 </body>
 </html>

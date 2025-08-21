@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+  let string=prompt("Nhập vào một chuỗi");
+  function checkString(str){
+    let words = str.trim().split(/\s+/);
+    if (words.length === 1) {
+      return words[0];
+    }
+    let result = "";
+    for (let i = 0; i < words.length; i++) {
+      result += words[i][0].toUpperCase();
+    }
+    return result;
+  }
+  let ketQua=checkString(string);
+  document.write(ketQua);
+</script>
 </body>
 </html>
