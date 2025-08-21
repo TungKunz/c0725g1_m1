@@ -6,17 +6,17 @@
 </head>
 <body>
 <script>
-  let chuoi=prompt("Nhập vào chuỗi: ");
+  let string=prompt("Nhập vào chuỗi: ");
   let char=prompt("Nhập vào kí tự kiểm tra: ");
-  function checkChar(arr,a){
-    for (let i = 0; i < arr.length; i++) {
-      if(arr[i]===a){
+  function checkChar(string,a){
+    for (let i = 0; i < string.length; i++) {
+      if(string[i]===a){
         return true
       }
     }
     return false;
   }
-  alert(checkChar(chuoi,char));
+  alert(checkChar(string,char));
 </script>
 </body>
 </html>
