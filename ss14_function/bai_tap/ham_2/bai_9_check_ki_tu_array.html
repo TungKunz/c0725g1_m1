@@ -9,12 +9,17 @@
   let string=prompt("Nhập vào chuỗi: ");
   let char=prompt("Nhập vào kí tự kiểm tra: ");
   function checkChar(string,a){
+    let count=0;
     for (let i = 0; i < string.length; i++) {
       if(string[i]===a){
-        return true
+        count++;
       }
     }
-    return false;
+    if(count>0){
+      return count;
+    }else {
+      return -1;
+    }
   }
   alert(checkChar(string,char));
 </script>
