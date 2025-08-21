@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="result"></p>
+<script>
+  let array=[]
+  function randomArray(){
+    for (let i = 0; i < 10; i++) {
+      array.push(Math.floor(Math.random()*100));
+    }
+  }
+  randomArray();
+  alert(array);
+  function reverseArray(arr) {
+    if (arr.length === 0) return null;
+    for (let i = 0; i < arr.length / 2; i++) {
+      let b = arr[i];
+      arr[i] = arr[arr.length - 1 - i];
+      arr[arr.length - 1 - i] = b;
+    }
+  }
+  reverseArray(array);
+  alert(array);
+</script>
+</body>
+</html>

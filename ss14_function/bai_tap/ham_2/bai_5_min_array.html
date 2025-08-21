@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let array=[]
+  function randomArray(){
+    for (let i = 0; i < 3; i++) {
+      array.push(Math.floor(Math.random()*100));
+    }
+  }
+  randomArray();
+  alert(array)
+  function minArray(arr){
+    let min=arr[0];
+    for (let i = 1; i < arr.length; i++) {
+      if(arr[i]<min){
+        min=arr[i];
+      }
+    }
+    return min;
+  }
+  alert(minArray(array));
+</script>
+</body>
+</html>

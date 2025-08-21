@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let chuoi=prompt("Nhập vào chuỗi: ");
+  let char=prompt("Nhập vào kí tự kiểm tra: ");
+  function checkChar(arr,a){
+    for (let i = 0; i < arr.length; i++) {
+      if(arr[i]===a){
+        return true
+      }
+    }
+    return false;
+  }
+  alert(checkChar(chuoi,char));
+</script>
+</body>
+</html>
