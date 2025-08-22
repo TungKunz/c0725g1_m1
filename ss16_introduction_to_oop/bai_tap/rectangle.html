@@ -8,20 +8,37 @@
 <body>
 <canvas id="myCanvas" width="10000" height="10000" style="border:1px solid #d3d3d3;"></canvas>
 <script>
-  function Rectangle(width,length){
-    this.width=width;
-    this.length=length;
+
+  class Rectangle {
+      width;
+      height;
+      setWidth(setWidth){
+          this.width=setWidth;
+      }
+      setHeight(setHeight){
+          this.height=setHeight;
+      }
+      getWidth(){
+          return this.width;
+      }
+      getHeight(){
+          return this.height;
+      }
+      constructor(width,height) {
+          this.width=width;
+          this.height=height;
+      }
+      getArea(){
+          return this.getWidth() * this.getHeight();
+      }
   }
-  Rectangle.prototype.getArea = function() {
-    return this.width * this.length;
-  };
+
   let rect = new Rectangle(200, 100);
   console.log("Diện tích:", rect.getArea());
-
   const canvas = document.getElementById("myCanvas");
   const ctx = canvas.getContext("2d");
   ctx.fillStyle = "blue";
-  ctx.fillRect(200, 200, rect.width, rect.length);
+  ctx.fillRect(200, 200, rect.width, rect.height);
 </script>
 </body>
 </html>
