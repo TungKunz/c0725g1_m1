@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<canvas id="myCanvas" width="10000" height="10000" style="border:1px solid #d3d3d3;"></canvas>
+<script>
+  function Rectangle(width,length){
+    this.width=width;
+    this.length=length;
+  }
+  Rectangle.prototype.getArea = function() {
+    return this.width * this.length;
+  };
+  let rect = new Rectangle(200, 100);
+  console.log("Diện tích:", rect.getArea());
+
+  const canvas = document.getElementById("myCanvas");
+  const ctx = canvas.getContext("2d");
+  ctx.fillStyle = "blue";
+  ctx.fillRect(200, 200, rect.width, rect.length);
+</script>
+</body>
+</html>

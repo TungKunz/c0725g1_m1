@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  function Temperature(c){
+    this.temperature=c;
+  }
+  Temperature.prototype.checkTemperature= function (){
+      return (this.temperature >= -273 && this .temperature <=100)
+  }
+  Temperature.prototype.cToF = function () {
+    if (this.checkTemperature()) {
+      return this.temperature * 9 / 5 + 32;
+    } else {
+      return "Nhiệt độ không hợp lệ!";
+    }
+  };
+  Temperature.prototype.cToK = function () {
+    if (this.checkTemperature()) {
+      return this.temperature + 273.15;
+    } else {
+      return "Nhiệt độ không hợp lệ!";
+    }
+  };
+  let t1 = new Temperature(25);
+  document.write("25°C =", t1.cToF()," ", t1.cToK());
+</script>
+</body>
+</html>
