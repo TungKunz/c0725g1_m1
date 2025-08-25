@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Animal{
+        name;
+        weight;
+        speed;
+        constructor(name, weight, speed) {
+            this.name = name;
+            this.weight = weight;
+            this.speed = speed;
+        }
+    }
+    class Rat extends Animal{
+        status;
+        constructor(name, weight, speed, status) {
+            super(name, weight, speed);
+            this.status=status;
+        }
+        getName(){
+            return this.name;
+        }
+        say(string){
+            document.write(this.name + " says: " + string + "<br>");
+        }
+        getSpeed(){
+            return this.speed;
+        }
+        setStatus(status){
+            this.status=status
+        }
+        getStatus(){
+            return this.status;
+        }
+        getWeight(){
+            return this.weight;
+        }
+    }
+    class Cat extends Animal {
+        constructor(name, weight, speed) {
+            super(name, weight, speed);
+        }
+
+
+        say(string) {
+            document.write(this.name + " says: " + string + "<br>");
+        }
+
+        catchingMouse(rat) {
+            if (this.speed > rat.getSpeed()) {
+                document.write(this.name + " bắt được " + rat.name + "<br>");
+                return true;
+            } else {
+                document.write(rat.name + " chạy thoát khỏi " + this.name + "<br>");
+                return false;
+            }
+        }
+
+        eatMouse(rat) {
+            if (rat.getStatus()) {
+                this.weight += rat.getWeight();
+                document.write(this.name + " ăn được " + rat.getName() +
+                    " → khối lượng mới: " + this.weight + "<br>");
+                rat.setStatus(false);
+            } else {
+                document.write(this.name + " không ăn được " + rat.name + "<br>");
+            }
+        }
+    }
+    let mouse = new Rat("Mickey",80,20,true);
+    let mouse_2= new Rat("Jerry",80,20,false);
+    let cat = new Cat("Tom",120,80);
+    cat.say("Mew mew đói quá");
+    mouse.say("Á mèo kìa");
+    cat.catchingMouse(mouse);
+    cat.eatMouse(mouse);
+    cat.catchingMouse(mouse_2);
+    cat.eatMouse(mouse_2);
+</script>
+</body>
+</html>

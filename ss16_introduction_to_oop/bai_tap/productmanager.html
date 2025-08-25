@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+  <div>
+    <input id="input" type="text">
+    <button onclick="manager.add()">Thêm</button>
+    <button id="saveBtn" style="display: none" onclick="manager.saveProduct()">SAVE</button>
+  </div>
+  <div>
+    <h3>Display all Product</h3>
+    <div id="result"></div>
+  </div>
+</div>
+
+
+
+<script>
+  class Product{
+    name;
+    constructor(name) {
+      this.name=name
+    }
+    setName(name){
+      this.name=name;
+    }
+    getName(){
+      return this.name
+    }
+  }
+  class ProductManeger{
+    constructor() {
+      this.danhSachSanPham=[];
+      this.indexEditing=-1;
+    }
+    add(){
+      let ten=document.getElementById("input").value.trim();
+      if(ten!==""){
+        let sanPham=new Product(ten);
+        this.danhSachSanPham.push(sanPham);
+        document.getElementById("input").value = "";
+        this.display();
+      }
+    }
+    display(){
+      let tableString=`<table>`
+      for (let i = 0; i < this.danhSachSanPham.length; i++) {
+        tableString+=`<tr>
+          <td>${this.danhSachSanPham[i].name}</td>
+          <td><button onclick="manager.editProduct(${i})">Sửa</button></td>
+          <td><button onclick="manager.deleteProduct(${i})">Xóa</button></td>
+        </tr>`
+
+      }
+      tableString += "</table>";
+      document.getElementById("result").innerHTML=tableString;
+    }
+    editProduct(index){
+      document.getElementById("input").value=this.danhSachSanPham[index].name;
+      this.indexEditing=index;
+      document.getElementById("saveBtn").style.display="inline-block";
+
+    }
+    saveProduct(){
+      let newName=document.getElementById("input").value.trim();
+      if (this.indexEditing !== -1 && newName !== "") {
+        this.danhSachSanPham[this.indexEditing].name = newName;
+        this.display();
+        document.getElementById("input").value = "";
+        document.getElementById("saveBtn").style.display="none";
+      }
+    }
+    deleteProduct(index) {
+      this.danhSachSanPham.splice(index, 1);
+      this.display();
+    }
+  }
+
+    let manager=new ProductManeger();
+</script>
+</body>
+</html>
