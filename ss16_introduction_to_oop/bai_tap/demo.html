@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product List</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(to right, #2980B9, #6DD5FA);
+            color: #FFFFFF
+        }
+        .header {
+            font-size: 30px;
+            text-align: center;
+            width: 600px;
+            font-family: "Playfair Display", serif;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3s steps(30) forwards;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 600px; }
+        }
+
+        table {
+            width: 600px;
+            height: 20px;
+        }
+
+        #error {
+            color: red;
+        }
+
+        .popup {
+            width: 300px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            background: #fff3f2;
+            border: 1px solid #d61b06;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-family: Arial, sans-serif;
+            position: fixed;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+
+        .popup-text h4 {
+            margin: 0 0 15px 0;
+            color: #d61b06;
+        }
+
+        button {
+            padding: 8px 16px;
+            margin: 0 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .btn-yes {
+            background: #d61b06;
+            color: white;
+        }
+
+        .btn-no {
+            background: gray;
+            color: white;
+        }
+
+        .green-color {
+            color:green;
+        }
+        .red-color {
+            color:red;
+        }
+        .input-box {
+            position: relative;
+            width: 250px;
+            margin: 20px auto;
+        }
+
+        .input {
+            width: 100%;
+            height: 40px;
+            border-radius: 50px;
+            border: 1px solid #ccc;
+            padding: 10px 15px;
+            font-size: 16px;
+            outline: none;
+            background: transparent;
+        }
+
+        .input-box label {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            color: gray;
+            pointer-events: none;
+            transition: 0.3s ease;
+        }
+
+        .input:focus + label,
+        .input:not(:placeholder-shown) + label {
+            top: -5px;
+            left: 10px;
+            font-size: 12px;
+            color: #0f9b0f;
+            background: white;
+            padding: 0 5px;
+            border-radius: 4px;
+        }
+        .divAddHeader{
+            width: 600px;
+            text-align: center;
+        }
+        #addBtn{
+            color: #0f9b0f;
+            border-radius: 70% 30% 70% 30% / 30% 70% 30% 70% ;
+            position: relative;
+            z-index: 1;
+
+        }
+        #addBtn::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            right: 50%;
+            opacity: 0;
+            z-index: -1;
+            background: aqua;
+            transition: .5s all ease;
+            border-radius: 70% 30% 70% 30% / 30% 70% 30% 70% ;
+
+        }
+        #addBtn:hover{
+            color: #ffffff;
+        }
+        #addBtn:hover:before{
+            left: 0;
+            right: 0;
+            opacity: 1;
+        }
+        #saveBtn{
+            color: #cc7a00;
+        }
+        #saveBtn:hover{
+            color: #f79d50;
+        }
+        .buttonEdit {
+            background-color: #4CAF50;
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .buttonEdit:hover {
+            background-color: #45a049;
+        }
+
+        .buttonDelete {
+            background-color: #f44336;
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .buttonDelete:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+<div class="allDiv">
+    <div class="divAddHeader">
+        <h3 id="header_add" class="header" style="display: inline-block">Add New Product</h3>
+        <h3 id="header_edit" class="header" style="display: none">Edit Product</h3><br>
+        <div class="input-box">
+            <input id="input" class="input" type="text" required placeholder=" ">
+            <label for="input">Nhập tên sản phẩm</label>
+        </div>
+
+        <button id="addBtn" onclick="manager.addProduct()">ADD</button>
+        <button id="saveBtn" onclick="manager.saveProduct()"
+                style="display:none;border-radius: 70% 30% 70% 30% / 30% 70% 30% 70%  ">SAVE
+        </button>
+        <p id="error" style="font-size: 20px"></p>
+    </div>
+
+    <div>
+        <table>
+            <tr>
+                <td><h3>Product name</h3></td>
+                <td></td>
+                <td><p id="result_all_product">products</p></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <h3>Display all Product</h3>
+        <div id="result"></div>
+    </div>
+    <div id="thongBaoSua" class="popup" style="display: none">
+        <div class="popup-text">
+            <h4>Bạn có chắc chắn muốn sửa?</h4>
+        </div>
+        <div>
+            <button type="button" class="btn-yes" onclick="manager.xacNhanSua(true)"><i class='fa fa-check fa-2x green-color'></i> Có</button>
+            <button type="button" class="btn-no" onclick="manager.xacNhanSua(false)"><i class='fa fa-times fa-2x red-color '></i> Không</button>
+        </div>
+    </div>
+    <div id="thongBaoXoa" class="popup" style="display: none">
+        <div class="popup-text">
+            <h4>Bạn có chắc chắn muốn xóa?</h4>
+        </div>
+        <div>
+            <button type="button" class="btn-yes" onclick="manager.xacNhanXoa(true)"><i class='fa fa-check fa-2x green-color'></i> Có</button>
+            <button type="button" class="btn-no" onclick="manager.xacNhanXoa(false)"><i class='fa fa-times fa-2x red-color '></i> Không</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    class ProductManager {
+        constructor() {
+            this.danhSachSanPham = [];
+            this.editingIndex = -1;
+            this.indexCanXoa = null;
+            this.error = document.getElementById("error");
+        }
+
+        addProduct() {
+            let ten = document.getElementById("input").value.trim();
+            if (ten !== "") {
+                this.danhSachSanPham.push(ten);
+                document.getElementById("input").value = "";
+                this.error.innerHTML = "";
+                this.display();
+                this.allProduct();
+            } else {
+                this.error.innerHTML = "Lỗi";
+            }
+        }
+
+        display() {
+            let tableString = `<table>`;
+            for (let i = 0; i < this.danhSachSanPham.length; i++) {
+                tableString += `<tr>
+                             <td>${this.danhSachSanPham[i]}</td>
+                             <td><button class="buttonEdit" onclick="manager.editProduct(${i})">Edit</button></td>
+                             <td><button class="buttonDelete" onclick="manager.deleteProduct(${i})">Delete</button></td>
+                          </tr>`;
+            }
+            tableString += "</table>";
+            document.getElementById("result").innerHTML = tableString;
+        }
+
+        editProduct(index) {
+            document.getElementById("input").value = this.danhSachSanPham[index];
+            this.editingIndex = index;
+            document.getElementById("header_add").style.display = "none";
+            document.getElementById("header_edit").style.display = "inline-block";
+            document.getElementById("addBtn").style.display = "none";
+            document.getElementById("saveBtn").style.display = "inline-block";
+        }
+
+        saveProduct() {
+            let newName = document.getElementById("input").value.trim();
+            if (this.editingIndex !== -1 && newName !== "") {
+                document.getElementById("thongBaoSua").style.display = "inline-block";
+                this.tenMoi = newName;
+            }
+        }
+
+        xacNhanSua(dongY) {
+            if (dongY) {
+                this.danhSachSanPham[this.editingIndex] = this.tenMoi;
+                this.display();
+                this.allProduct();
+            }
+            this.resetForm();
+        }
+
+        deleteProduct(index) {
+            this.indexCanXoa = index;
+            document.getElementById("thongBaoXoa").style.display = "inline-block";
+        }
+
+        xacNhanXoa(dongY) {
+            if (dongY && this.indexCanXoa !== null) {
+                this.danhSachSanPham.splice(this.indexCanXoa, 1);
+                this.display();
+                this.allProduct();
+            }
+            this.resetForm();
+            this.indexCanXoa = null;
+        }
+
+        resetForm() {
+            document.getElementById("input").value = "";
+            this.editingIndex = -1;
+            document.getElementById("header_add").style.display = "inline-block";
+            document.getElementById("header_edit").style.display = "none";
+            document.getElementById("addBtn").style.display = "inline-block";
+            document.getElementById("saveBtn").style.display = "none";
+            document.getElementById("thongBaoSua").style.display = "none";
+            document.getElementById("thongBaoXoa").style.display = "none";
+        }
+
+        allProduct() {
+            document.getElementById("result_all_product").innerHTML =
+                `${this.danhSachSanPham.length} products`;
+        }
+    }
+    let manager = new ProductManager();
+</script>
+</body>
+</html>

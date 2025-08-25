@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  class Human{
+    name;
+    gender;
+    weight;
+    constructor(name,gender,weight) {
+      this.name=name;
+      this.gender=gender;
+      this.weight=weight;
+    }
+    isMale(){
+      return this.gender;
+    }
+    setGender(boolean){
+      this.gender=boolean;
+    }
+    checkApple(Apple){
+      return Apple.isEmpty();
+    }
+    eat(Apple){
+      if(!this.checkApple(Apple)){
+        this.weight++;
+        Apple.decrease();
+      }
+    }
+    say(string){
+      console.log(this.name + " says: " + string);
+    }
+    getName(){
+      return this.name;
+    }
+    setName(name){
+      this.name=name;
+    }
+    getWeight(){
+      return this.weight;
+    }
+    setWeight(weight){
+      this.weight=weight;
+    }
+  }
+  class Apple{
+    weight;
+    constructor(weight) {
+      this.weight=weight;
+    }
+    decrease(){
+      if(this.weight>0){
+        this.weight--;
+      }
+    }
+    isEmpty(){
+      return this.weight===0;
+    }
+    getWeight(){
+      return this.weight;
+    }
+
+  }
+  let apple = new Apple(5);
+  let adam = new Human("Adam", true, 60);
+  let eva = new Human("Eva",false,50)
+  adam.say("Tôi đói quá, cho tôi ăn táo!");
+  adam.eat(apple);
+  console.log("Táo còn: " + apple.getWeight() + " - Cân nặng Adam: " + adam.getWeight());
+  eva.eat(apple);
+  console.log("Táo còn: " + apple.getWeight() + " - Cân nặng Eva: " + eva.getWeight());
+
+</script>
+</body>
+</html>

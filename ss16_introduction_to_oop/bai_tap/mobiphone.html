@@ -1,0 +1,98 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>Title</title>
+  </head>
+  <body>
+  <script>
+    class Mobile{
+      battery;
+      isOn;
+      draft;
+      inbox;
+      sent;
+      constructor(battery,isOn,draft,inbox,sent) {
+        this.battery=battery > 100 ? 100 : battery;
+        this.isOn=isOn;
+        this.draft=draft;
+        this.inbox=inbox;
+        this.sent=sent;
+      }
+      set setBattery(battery){
+        this.battery=battery;
+      }
+      get getBattery(){
+        return this.battery;
+      }
+      checkStatus(){
+        return this.isOn;
+      }
+      turnOn() {
+        if (!this.isOn) {
+          this.isOn = true;
+          return "Điện thoại đã bật.";
+        }
+        return "Điện thoại đang bật.";
+      }
+      turnOff() {
+        if (this.isOn) {
+          this.isOn = false;
+          return "Điện thoại đã tắt.";
+        }
+        return "Điện thoại đang tắt.";
+      }
+      useBattery(){
+        if(this.getBattery > 0 ){
+          this.battery--;
+        }
+        if(this.battery===0){
+          this.isOn=false;
+          return "Pin cạn, điện thoại tắt.";
+        }
+      }
+      composeMessage(msg){
+        if(!this.isOn){
+          return "Điện thoại chưa bật";
+        }
+        this.useBattery();
+        this.draft=msg;
+        return "Đang soạn tin nhắn: " + msg;
+      }
+      sendMessenger(receiver){
+        if (!this.isOn) return "Điện thoại chưa bật!";
+        if (this.draft === "") return "Không có tin nhắn để gửi!";
+        this.useBattery();
+        this.sent.push(this.draft);
+        receiver.receiveMessage(this.draft);
+        this.draft = "";
+        return "Tin nhắn đã được gửi.";
+      }
+      receiveMessage(msg){
+        if (!this.isOn) return ;
+        this.useBattery();
+        this.inbox.push(msg);
+      }
+      viewInbox(){
+        if(!this.isOn) return;
+        return  this.inbox.length>0 ? this.inbox : "Hộp thư đến trống";
+      }
+      viewSent(){
+        if(!this.isOn) return;
+        return this.sent.length >0 ? this.sent : "Hộp thư đã gửi trống";
+      }
+    }
+    let nokia = new Mobile(100,false,"",[],[]);
+    let iphone = new Mobile(90,false,"",[],[]);
+
+    document.writeln("Nokia",nokia.turnOn() + "<br>")
+    document.writeln("Iphone",iphone.turnOn() + "<br>" );
+
+    document.writeln("Nokia ", nokia.composeMessage("Hi iphone, I'm Nokia") + "<br>" );
+    document.writeln(nokia.sendMessenger(iphone) + "<br>" );
+
+    document.writeln("Hộp thư iphone", iphone.viewInbox());
+
+  </script>
+  </body>
+  </html>

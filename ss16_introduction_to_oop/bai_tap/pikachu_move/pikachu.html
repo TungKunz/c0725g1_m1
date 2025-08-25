@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Objects</title>
+</head>
+<body>
+<div id="game"></div>
+<script src="script.js"></script>
+<script>
+  function Hero(image, top, left, size){
+    this.image = image;
+    this.top = top;
+    this.left = left;
+    this.size = size;
+
+    this.getHeroElement = function(){
+      return '<img width="'+ this.size + '"' +
+              ' height="'+ this.size + '"' +
+              ' src="' + this.image +'"' +
+              ' style="top: '+this.top+'px; left:'+this.left+'px;position:absolute;" />';
+    }
+
+    this.moveRight = function(){ this.left += 20; }
+    this.moveLeft  = function(){ this.left -= 20; }
+    this.moveUp    = function(){ this.top -= 20; }
+    this.moveDown  = function(){ this.top += 20; }
+  }
+
+  var hero = new Hero('pikachu.png', 20, 30, 100);
+
+  document.getElementById('game').innerHTML = hero.getHeroElement();
+
+  document.addEventListener("keydown", function(event) {
+    switch(event.key) {
+      case "ArrowUp":    hero.moveUp(); break;
+      case "ArrowDown":  hero.moveDown(); break;
+      case "ArrowLeft":  hero.moveLeft(); break;
+      case "ArrowRight": hero.moveRight(); break;
+    }
+    document.getElementById('game').innerHTML = hero.getHeroElement();
+  });
+</script>
+</body>
+
+</html>
