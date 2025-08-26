@@ -10,6 +10,7 @@
     <input id="input" type="text">
     <button onclick="manager.add()">Thêm</button>
     <button id="saveBtn" style="display: none" onclick="manager.saveProduct()">SAVE</button>
+    <p id="error"></p>
   </div>
   <div>
     <h3>Display all Product</h3>
@@ -37,13 +38,23 @@
       this.danhSachSanPham=[];
       this.indexEditing=-1;
     }
+    checkName(ten){
+      for (let sp of this.danhSachSanPham){
+        if (sp.name === ten){
+          return true;
+        }
+      }
+      return false;
+    }
     add(){
       let ten=document.getElementById("input").value.trim();
-      if(ten!==""){
+      if(ten!=="" && !this.checkName(ten)){
         let sanPham=new Product(ten);
         this.danhSachSanPham.push(sanPham);
         document.getElementById("input").value = "";
         this.display();
+      }else {
+        document.getElementById("error").innerHTML="Bạn không thể để trống hoặc đã có tên trong danh sách, mời nhập lại"
       }
     }
     display(){

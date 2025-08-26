@@ -6,18 +6,43 @@
 </head>
 <body>
 <script>
-  var x = 2;
-  var y = [1,2,3,4,5];
-  var z = [6,7,8,9,10,11];
 
-  if(y[x] + z[x-1] == z[x+2])
-  {
-    console.log('Codegym');
-  }
-  else
-  {
-    console.log('Agilead');
-  }
+    function kangaroo(x1, v1, x2, v2) {
+        if(x2>x1 && v2>v1 || x1 > x2 && v1 > v2){
+            return "NO";
+        }
+        if (v1 === v2) {
+            return x1 === x2 ? "YES" : "NO";
+        }
+        if(x2>x1){
+
+            while(true){
+                x1= x1+v1 ;
+                x2= x2+v2;
+                if(x1===x2){
+                    return "YES";
+                }
+                if(x1>x2){
+                    return "NO";
+                }
+            }
+        }else if(x1>x2){
+            while(true){
+                x1=x1+v1;
+                x2=x2+v2;
+                if(x1===x2){
+                    return "YES";
+                }
+                if(x1<x2){
+                    return "NO";
+                }
+            }
+        }else{
+            return "YES"
+        }
+
+    }
+
 </script>
 </body>
 </html>

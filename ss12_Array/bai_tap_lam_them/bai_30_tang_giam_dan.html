@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arr=[1,2,3,4,5];
+    console.log(checkArray(arr));
+    function checkArray(arr){
+        let tangDan= true;
+        for (let i = 0; i < arr.length; i++) {
+            if(arr[i]>arr[i+1]){
+                tangDan=false;
+            }
+
+        }
+        return tangDan;
+    }
+</script>
+</body>
+</html>

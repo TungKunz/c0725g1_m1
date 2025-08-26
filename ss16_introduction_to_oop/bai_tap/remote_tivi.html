@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Remote{
+        id;
+        tv;
+        constructor(id,tv) {
+            this.id=id;
+            this.tv=tv;
+        }
+        setChannel(channel){
+            if(this.tv.status){
+                this.tv.channel = channel;
+            } else {
+                console.log("TV is off. Cannot change channel.");
+            }
+        }
+        setVolume(volume){
+            if(this.tv.status){
+                this.tv.volume = volume;
+            } else {
+                console.log("TV is off. Cannot change channel.");
+            }
+        }
+    }
+    class Tivi{
+        chanel;
+        volume;
+        status;
+        constructor(chanel,volume,status) {
+            this.chanel=chanel;
+            this.volume=volume;
+            this.status=status;
+        }
+        turnOn(){
+            return this.status=true;
+        }
+        turnOff(){
+            return this.status=false;
+        }
+        setChanel(chanel){
+            this.chanel=chanel;
+        }
+        setVolume(volume){
+            this.volume=volume;
+        }
+        getVolume(){
+            return this.volume;
+        }
+    }
+    let sony = new Tivi(0,0,false)
+    let remote = new Remote(1,sony)
+
+    remote.tv.turnOn();
+    remote.setChannel(7);
+    sony.setChanel(9);
+    sony.setVolume(20);
+    remote.tv.setVolume(10);
+    console.log(sony.getVolume());
+</script>
+</body>
+</html>

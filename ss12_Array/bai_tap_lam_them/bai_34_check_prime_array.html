@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  let n=+prompt("Nhập số lượng");
+  let arr=[]
+  function nhapMang(n){
+    for (let i = 0; i < n; i++) {
+      arr[i]= +prompt("Nhập phần tử thứ "+i+ ": ");
+    }
+  }
+  nhapMang(n);
+  function inMang(){
+    for (let i = 0; i < n; i++) {
+      document.write("Phần tử thứ "+i+ " "+arr[i] +"<br>");
+    }
+  }
+  inMang();
+  function checkPrime(n){
+    if(n<2){
+      return false;
+    }
+    for (let i = 2; i <= Math.sqrt(n); i++) {
+      if (n%i===0){
+        return false
+      }
+    }
+    return true;
+  }
+  function checkPrimeArray(arr) {
+    for (let i = 0; i < arr.length; i++) {
+      if (!checkPrime(arr[i])){
+        return false
+      }
+    }
+    return true;
+  }
+  document.write(`${checkPrimeArray(arr)}`);
+</script>
+</body>
+</html>

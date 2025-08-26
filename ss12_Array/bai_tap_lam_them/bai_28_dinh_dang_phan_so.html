@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let n;
+  let string;
+  do{
+    n=prompt("Nhập vào:");
+    string= n.trim().split("/");
+  }while (isNaN(string[0]) || isNaN(string[1]));
+  function UCLN(a,b){
+    while(b!==0){
+      let temp=a%b;
+      a=b;
+      b=temp;
+    }
+    return a;
+  }
+  function check(n){
+    let str=n.trim().split("/");
+    let ucln = UCLN(Math.abs(parseInt(str[0])),Math.abs(parseInt(str[1])));
+    let tu=str[0]/ucln;
+    let mau=str[1]/ucln;
+    if(mau<0){
+      tu=-tu;
+      mau=-mau;
+    }
+    console.log(tu + "/" + mau);
+  }
+  check(n);
+</script>
+</body>
+</html>

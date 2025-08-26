@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function checkTriangle(x, y, z) {
+        if (x > 0 && y > 0 && z > 0) {
+            if (x + y > z && x + z > y && y + z > x) {
+                if (x * x === y * y + z * z || y * y === x * x + z * z || z * z === x * x + y * y) {
+                    return "Đây là 1 tam giác vuông";
+                } else {
+                    return "Chỉ là 1 tam giác thường";
+                }
+            } else {
+                return "Không phải là 1 tam giác";
+            }
+        } else {
+            return "Không phải là 1 tam giác";
+        }
+    }
+    console.log(checkTriangle(1, 4, 5));
+</script>
+</body>
+</html>

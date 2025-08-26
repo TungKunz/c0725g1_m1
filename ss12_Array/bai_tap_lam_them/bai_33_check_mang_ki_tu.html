@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let n=+prompt("Nhập số lượng");
+  let arr=[]
+  function nhapMang(n){
+    for (let i = 0; i < n; i++) {
+      arr[i]= prompt("Nhập phần tử thứ "+i+ ": ");
+    }
+  }
+  nhapMang(n);
+  function inMang(){
+    for (let i = 0; i < n; i++) {
+      document.write("Phần tử thứ "+i+ " "+arr[i] +"<br>");
+    }
+  }
+  inMang();
+  function checkMang(arr){
+    let so=true;
+    let kyTu=true;
+    for (let i = 0; i < n; i++) {
+      if(isNaN(arr[i])){
+        so=false
+      }else if(!isNaN(arr[i])){
+        kyTu=false;
+      }
+    }
+    if(!so && !kyTu){
+      return -1;
+    }else if(so){
+      return 1;
+    }else if(kyTu){
+      return 0;
+    }
+  }
+  document.write(`${checkMang(arr)}`);
+</script>
+</body>
+</html>

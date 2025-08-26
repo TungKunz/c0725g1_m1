@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let x=[1,2,3,4];
+  let y=[3,5,7,9];
+  function checkXY(x,y) {
+    if(x.length!==y.length){
+      return false;
+    }
+    for (let i = 0; i < x.length; i++) {
+      if(y[0]!==2*x[0]+1){
+        return false;
+      }
+    }
+    return true;
+  }
+
+  console.log(checkXY(x,y));
+</script>
+</body>
+</html>
