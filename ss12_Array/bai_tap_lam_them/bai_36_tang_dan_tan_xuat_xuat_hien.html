@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arr=[1,3,4,5,7,2,3,5];
+    function soLanXuatHien(array, n) {
+        let count = 0;
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] === n) {
+                count++;
+            }
+        }
+        return count;
+    }
+    function checkArray(array){
+        let arrNew=[];
+        for (let i = 0; i < array.length; i++) {
+            if(!arrNew.includes(array[i])){
+                arrNew.push(array[i])
+            }
+        }
+        for (let i = 0; i < arrNew.length; i++) {
+            for (let j = i + 1; j < arrNew.length; j++) {
+                if (soLanXuatHien(array, arrNew[i]) > soLanXuatHien(array, arrNew[j])) {
+                    let temp = arrNew[i];
+                    arrNew[i] = arrNew[j];
+                    arrNew[j] = temp;
+                }
+            }
+        }
+        return arrNew;
+    }
+
+    console.log(checkArray(arr));
+</script>
+</body>
+</html>

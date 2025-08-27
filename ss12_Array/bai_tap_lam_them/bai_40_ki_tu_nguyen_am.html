@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let string="abdsadjnmiioooaaaunnvbdgdf";
+    let nguyenAm=["a","i","o","e","u"];
+    function checkString(str){
+        let arr=[];
+        for (let i = 0; i < str.length; i++) {
+            if(nguyenAm.includes(str[i])){
+                if(!arr.includes(str[i])){
+                    arr.push(str[i]);
+                }
+            }
+        }
+        return arr;
+    }
+
+    console.log(checkString(string));
+</script>
+</body>
+</html>
