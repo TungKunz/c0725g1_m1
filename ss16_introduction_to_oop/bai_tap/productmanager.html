@@ -8,7 +8,7 @@
 <div>
   <div>
     <input id="input" type="text">
-    <button onclick="manager.add()">Thêm</button>
+    <button id="addBtn" style="display: inline-block" onclick="manager.add()">Thêm</button>
     <button id="saveBtn" style="display: none" onclick="manager.saveProduct()">SAVE</button>
     <p id="error"></p>
   </div>
@@ -74,6 +74,7 @@
       document.getElementById("input").value=this.danhSachSanPham[index].name;
       this.indexEditing=index;
       document.getElementById("saveBtn").style.display="inline-block";
+      document.getElementById("addBtn").style.display="none";
 
     }
     saveProduct(){
@@ -83,6 +84,7 @@
         this.display();
         document.getElementById("input").value = "";
         document.getElementById("saveBtn").style.display="none";
+        document.getElementById("addBtn").style.display="inline-block";
         this.indexEditing=-1;
       }
     }

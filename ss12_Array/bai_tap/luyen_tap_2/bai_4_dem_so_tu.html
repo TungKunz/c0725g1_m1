@@ -12,13 +12,11 @@
 
 <script>
   function demSoTu() {
-    //trim() xóa khoảng trắng đầu và cuối
     let chuoi = document.getElementById("input").value.trim();
     if (chuoi === "") {
       document.getElementById("result").innerHTML = "Không có từ nào.";
       return;
     }
-    ///\s+/: tách theo khoảng trắng (1 hoặc nhiều)
     let mangTu = chuoi.split(/\s+/);
     document.getElementById("result").innerHTML = "Số từ: " + mangTu.length;
   }

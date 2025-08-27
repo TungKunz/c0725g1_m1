@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <div>
+        <label for="inputten">Tên</label>
+        <input id="inputten" type="text">
+
+        <label for="numberphone">Số điện thoại</label>
+        <input id="numberphone" type="text">
+
+        <label for="local">Địa chỉ</label>
+        <input id="local" type="text">
+        <button id="addBtn" style="display: inline-block" onclick="manager.add()">Thêm</button>
+        <button id="saveBtn" style="display: none" onclick="manager.saveProduct()">SAVE</button>
+        <p id="error"></p>
+    </div>
+    <div>
+        <h3>Display all Product</h3>
+        <div id="result"></div>
+    </div>
+</div>
+<script>
+    class DanhBa {
+        name;
+        numberPhone;
+        local;
+
+        constructor(name, numberPhone, local) {
+            this.numberPhone = numberPhone;
+            this.name = name;
+            this.local = local;
+        }
+
+        getName() {
+            return this.name;
+        }
+
+        setName(name) {
+            this.name = name;
+        }
+
+        getNumberPhone() {
+            return this.numberPhone;
+        }
+
+        setNumberPhone(number) {
+            this.numberPhone = number;
+        }
+
+        getLocal() {
+            return this.local;
+        }
+
+        setLocal(local) {
+            this.local = local;
+        }
+
+    }
+
+    class QuanLyDanhBa {
+        constructor() {
+            this.danhSachTen = [];
+            this.indexEditing = -1;
+        }
+
+        checkName(ten) {
+            for (let sp of this.danhSachTen) {
+                if (sp.name === ten) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        add() {
+            let ten = document.getElementById("inputten").value.trim();
+            let dienThoai = document.getElementById("numberphone").value.trim();
+            let diaChi = document.getElementById("local").value.trim();
+            if (ten !== "" && !this.checkName(ten)) {
+                let sanPham = new DanhBa(ten, dienThoai, diaChi);
+                this.danhSachTen.push(sanPham);
+                document.getElementById("inputten").value = "";
+                document.getElementById("numberphone").value = "";
+                document.getElementById("local").value = "";
+                this.display();
+            } else {
+                document.getElementById("error").innerHTML = "Bạn không thể để trống hoặc đã có tên trong danh sách, mời nhập lại"
+            }
+        }
+
+        display() {
+            let tableString = `<table>`
+            for (let i = 0; i < this.danhSachTen.length; i++) {
+                tableString += `<tr>
+          <td>${this.danhSachTen[i].name}</td>
+          <td>${this.danhSachTen[i].numberPhone}</td>
+          <td>${this.danhSachTen[i].local}</td>
+          <td><button onclick="manager.editProduct(${i})">Sửa</button></td>
+          <td><button onclick="manager.deleteProduct(${i})">Xóa</button></td>
+        </tr>`
+
+            }
+            tableString += "</table>";
+            document.getElementById("result").innerHTML = tableString;
+        }
+
+        editProduct(index) {
+            document.getElementById("inputten").value = this.danhSachTen[index].name;
+            document.getElementById("numberphone").value = this.danhSachTen[index].numberPhone;
+            document.getElementById("local").value = this.danhSachTen[index].local;
+            this.indexEditing = index;
+            document.getElementById("saveBtn").style.display = "inline-block";
+            document.getElementById("addBtn").style.display = "none";
+
+        }
+
+        saveProduct() {
+            let newName = document.getElementById("inputten").value.trim();
+            let newPhone = document.getElementById("numberphone").value.trim();
+            let newLocal = document.getElementById("local").value.trim();
+            if (this.indexEditing !== -1 && newName !== "") {
+                this.danhSachTen[this.indexEditing].name = newName;
+                this.danhSachTen[this.indexEditing].numberPhone = newPhone;
+                this.danhSachTen[this.indexEditing].local = newLocal;
+                this.display();
+                document.getElementById("input").value = "";
+                document.getElementById("saveBtn").style.display = "none";
+                document.getElementById("addBtn").style.display = "inline-block";
+                this.indexEditing = -1;
+            }
+        }
+
+        deleteProduct(index) {
+            this.danhSachTen.splice(index, 1);
+            document.getElementById("inputten").value = "";
+            document.getElementById("numberphone").value = "";
+            document.getElementById("local").value = "";
+            this.display();
+        }
+    }
+
+    let manager = new QuanLyDanhBa();
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let n;
+    let arr = [];
+    do {
+        n = +prompt("Nhập n");
+    } while (n > 15 || n < 0 || n % 3 !== 0)
+    for (let i = 0; i < n; i++) {
+        arr[i] = +prompt("Nhập phần tử thứ " + i);
+    }
+    for (let i = 0; i < n; i++) {
+        document.write(arr[i] + " " + "<br>");
+    }
+    let check = true;
+
+    for (let i = 0; i < n; i += 3) {
+        let a = arr[i], b = arr[i+1], c = arr[i+2];
+        if (!(a > 0 && b > 0 && c > 0)) {
+            check = false;
+            break;
+        }
+
+        if (!(a + b > c && a + c > b && b + c > a)) {
+            check = false;
+            break;
+        }
+        let right = (a*a + b*b === c*c) ||
+            (a*a + c*c === b*b) ||
+            (b*b + c*c === a*a);
+        if (!right) {
+            check = false;
+            break;
+        }
+    }
+
+    if (check) {
+        document.write("OK");
+    } else {
+        document.write("NO");
+    }
+
+
+</script>
+</body>
+</html>
