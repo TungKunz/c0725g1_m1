@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="manager.displayMenu()">Menu</button>
+<script>
+    class MenuOder {
+        name;
+        price;
+        number;
+
+        constructor(name, price, number) {
+            this.name = name;
+            this.price = price;
+            this.number = number;
+        }
+    }
+
+    class ManagerMenu {
+        constructor() {
+            this.list = [];
+        }
+
+        displayMenu() {
+            let choice;
+            do {
+                let tong = 0;
+                let mon = "";
+                for (let i = 0; i < this.list.length; i++) {
+                    tong += this.list[i].number * this.list[i].price;
+                    mon += `${i + 1}. ${this.list[i].name} x ${this.list[i].number} = ${this.list[i].number * this.list[i].price}k\n`;
+                }
+                choice = +prompt(
+                    "---------- MENU ----------\n" +
+                    "Hãy nhập số để chọn đồ uống \n" +
+                    "1. Cafe       10k \n" +
+                    "2. Cacao      15k \n" +
+                    "3. Nước cam   20k \n" +
+                    "4. Nước Cà Chua   25k \n" +
+                    "5. Nước Dừa   30k \n" +
+                    "6. Thanh Toán   \n" +
+                    "------Danh sách đã chọn------ \n" +
+                    `${mon}` +
+                    "Tổng tiền: " + tong + "k"
+                );
+                let tenMon, gia;
+                if (choice >= 1 && choice <= 5) {
+                    let soLuong = +prompt("Nhập số lượng:");
+                    switch (choice) {
+                        case 1:
+                            tenMon = "Cafe";
+                            gia = 10;
+                            break;
+                        case 2:
+                            tenMon = "Cacao";
+                            gia = 15;
+                            break;
+                        case 3:
+                            tenMon = "Nước cam";
+                            gia = 20;
+                            break;
+                        case 4:
+                            tenMon = "Nước Cà Chua";
+                            gia = 25;
+                            break;
+                        case 5:
+                            tenMon = "Nước Dừa";
+                            gia = 30;
+                            break;
+
+                    }
+
+                    let monDaCo = false;
+                    for (let i = 0; i < this.list.length; i++) {
+                        if (this.list[i].name === tenMon) {
+                            this.list[i].number += soLuong;
+                            monDaCo = true;
+                            break;
+                        }
+                    }
+
+                    if (!monDaCo) {
+                        let monMoi = new MenuOder(tenMon, gia, soLuong)
+                        this.list.push(monMoi)
+                    }
+                } else if (choice === 6) {
+                    let tong = 0, mon = "";
+                    for (let i = 0; i < this.list.length; i++) {
+                        tong += this.list[i].number * this.list[i].price;
+                        mon += `${i + 1}. ${this.list[i].name} x ${this.list[i].number} = ${this.list[i].number * this.list[i].price}k\n`;
+                    }
+                    alert("------ Hóa Đơn ------ \n" + mon + "Tổng tiền: " + tong + "k");
+                }
+            } while (choice !== 6);
+        }
+    }
+
+    let manager = new ManagerMenu();
+</script>
+</body>
+</html>
