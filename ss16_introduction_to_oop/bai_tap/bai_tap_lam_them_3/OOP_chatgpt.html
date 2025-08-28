@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Xổ Số CODEGYM</title>
+  <style>
+    /* Toàn bộ trang */
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: #fff;
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #fff, 0 0 10px #00eaff; }
+      to { text-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff; }
+    }
+
+    /* Nút bấm */
+    button {
+      background: linear-gradient(45deg, #ff6a00, #ee0979);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      margin: 10px;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(255,255,255,0.6);
+    }
+
+    /* Ô nhập số */
+    input[type=number] {
+      width: 60px;
+      padding: 10px;
+      margin: 5px;
+      border-radius: 10px;
+      border: 2px solid #fff;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-size: 1rem;
+      text-align: center;
+      outline: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    input[type=number]:focus {
+      border-color: #ff6a00;
+      background: rgba(255,255,255,0.2);
+      transform: scale(1.1);
+    }
+
+    /* Kết quả xổ số */
+    #result, #ketQuaVe {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      background: rgba(0,0,0,0.3);
+      padding: 15px;
+      border-radius: 15px;
+      animation: fadeIn 1s ease;
+    }
+
+    /* Hiệu ứng fade in */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Lỗi */
+    #error {
+      color: #ff4b5c;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <h1>Xổ Số CODEGYM</h1>
+
+  <button onclick="manager.addTicket()">🎟️ Mua vé mới</button>
+  <button id="ketQuaXoSo" onclick="manager.ketQuaXoSo()">🎰 Xem Kết Quả</button>
+
+  <div id="numberSoXo" style="display: none; margin-top:20px;">
+    <input id="o1" type="number" min="1" max="99">
+    <input id="o2" type="number" min="1" max="99">
+    <input id="o3" type="number" min="1" max="99">
+    <input id="o4" type="number" min="1" max="99">
+    <input id="o5" type="number" min="1" max="99">
+    <input id="o6" type="number" min="1" max="99">
+    <br>
+    <button onclick="manager.confirmTicket()">✅ Xác nhận vé</button>
+  </div>
+
+  <p id="error"></p>
+
+  <div style="margin-top:20px;">
+    <h3>📜 Danh Sách Vé Đã Mua</h3>
+    <div id="result"></div>
+  </div>
+
+  <div style="margin-top:20px;">
+    <h3>🏆 Kết Quả Trúng Thưởng</h3>
+    <p id="ketQuaVe"></p>
+  </div>
+</div>
+
+<script>
+  class Ticket{
+    constructor(so1,so2,so3,so4,so5,so6) {
+      this.numbers=[so1,so2,so3,so4,so5,so6];
+    }
+  }
+
+  class TicketManager{
+    constructor() {
+      this.listTicket=[];
+    }
+
+    checkVe(n) {
+      n = +n;
+      return n >= 1 && n <= 99;
+    }
+
+    getNumberTicket(){
+      let arr=[];
+      for (let i = 1; i <= 6; i++) {
+        let val = document.getElementById("o" + i).value.trim();
+        if (!this.checkVe(val)) {
+          document.getElementById("error").innerText = "⚠️ Mỗi số phải từ 1-99 và không để trống!";
+          return null;
+        }
+        arr.push(+val);
+      }
+      document.getElementById("error").innerText = "";
+      return arr;
+    }
+
+    addTicket(){
+      if (this.listTicket.length < 4) {
+        let n=+prompt("---------- Lựa chọn ----------\n" +
+                "1. Bạn tự chọn số \n" +
+                "2. Random vé tự động \n"
+        );
+
+        if(n===1){
+          document.getElementById("numberSoXo").style.display="block";
+        }else if(n===2){
+          let arr = [];
+          while (arr.length < 6) {
+            arr.push(Math.floor(Math.random() * 99) + 1);
+          }
+          let ve = new Ticket(...arr);
+          this.listTicket.push(ve);
+          this.displayTickets();
+        }
+      }else {
+        document.getElementById("error").innerHTML = "⚠️ Bạn chỉ được mua tối đa 4 vé!";
+      }
+    }
+
+    confirmTicket(){
+      let numbers = this.getNumberTicket();
+      if (!numbers) return;
+      let ve = new Ticket(...numbers);
+      this.listTicket.push(ve);
+      this.displayTickets();
+      document.getElementById("numberSoXo").style.display="none";
+    }
+
+    displayTickets(){
+      let html = "";
+      this.listTicket.forEach((ve, idx) => {
+        html += `🎟️ Vé ${idx+1}: <b>${ve.numbers.join(", ")}</b><br>`;
+      });
+      document.getElementById("result").innerHTML = html;
+    }
+
+    ketQuaXoSo(){
+      let ketQua=[11,12,13,14,15,16];
+      // for (let i = 0; i < 6; i++) {
+      //   // có thể hiển thị đẹp hơn nếu muốn
+      // }
+      this.compare(ketQua);
+    }
+
+    compare(ketQua) {
+      let output = "";
+      this.listTicket.forEach((ve, idx) => {
+        let count = 0;
+        for (let i = 0; i < ve.numbers.length; i++) {
+          if (ve.numbers[i] === ketQua[i]) count++;
+        }
+
+        if (count === 3) output += `🎉 Vé ${idx+1}: trúng <b>giải khuyến khích</b><br>`;
+        else if (count === 4) output += `🥉 Vé ${idx+1}: trúng <b>giải ba</b><br>`;
+        else if (count === 5) output += `🥈 Vé ${idx+1}: trúng <b>giải nhì</b><br>`;
+        else if (count === 6) output += `🏆 Vé ${idx+1}: trúng <b>giải đặc biệt</b> 🎊<br>`;
+        else output += `😢 Vé ${idx+1}: chúc may mắn lần sau<br>`;
+      });
+      document.getElementById("ketQuaVe").innerHTML = output;
+    }
+  }
+
+  let manager= new TicketManager();
+</script>
+</body>
+</html>

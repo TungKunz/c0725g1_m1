@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Xổ Số CODEGYM</title>
+</head>
+<body>
+<div>
+  <div>
+    <h1>Xổ Số CODEGYM</h1>
+  </div>
+
+  <div>
+    <button onclick="manager.addTicket()">Mua vé mới</button>
+  </div>
+
+  <div id="numberSoXo" style="display: none; margin-top:10px;">
+    <input id="o1" type="number" min="1" max="99">
+    <input id="o2" type="number" min="1" max="99">
+    <input id="o3" type="number" min="1" max="99">
+    <input id="o4" type="number" min="1" max="99">
+    <input id="o5" type="number" min="1" max="99">
+    <input id="o6" type="number" min="1" max="99">
+    <button onclick="manager.confirmTicket()">Xác nhận vé</button>
+  </div>
+  <p id="error" style="color:red"></p>
+  <div id="ketQua" style="display: none; margin-top:10px">
+    <input id="kq1" type="number" min="1" max="99">
+    <input id="kq2" type="number" min="1" max="99">
+    <input id="kq3" type="number" min="1" max="99">
+    <input id="kq4" type="number" min="1" max="99">
+    <input id="kq5" type="number" min="1" max="99">
+    <input id="kq6" type="number" min="1" max="99">
+  </div>
+
+  <div>
+    <h3>Danh Sách Vé Đã Mua</h3>
+    <p id="result"></p>
+  </div>
+  <div>
+    <button id="ketQuaXoSo" onclick="manager.ketQuaXoSo()">Kết Quả</button>
+    <p id="ketQuaVe"></p>
+  </div>
+</div>
+
+<script>
+  class Ticket{
+    constructor(so1,so2,so3,so4,so5,so6) {
+      this.numbers=[so1,so2,so3,so4,so5,so6];
+    }
+  }
+
+  class TicketManager{
+    constructor() {
+      this.listTicket=[];
+    }
+
+    checkVe(n) {
+      n = +n;
+      return n >= 1 && n <= 99;
+    }
+
+    getNumberTicket(){
+      let arr=[];
+      for (let i = 1; i <= 6; i++) {
+        let val = document.getElementById("o" + i).value.trim();
+        if (!this.checkVe(val)) {
+          document.getElementById("error").innerText = "Mỗi số phải từ 1-99 và không để trống!";
+          return null;
+        }
+        arr.push(+val);
+      }
+      document.getElementById("error").innerText = "";
+      return arr;
+    }
+
+    addTicket(){
+      if (this.listTicket.length < 4) {
+        let n=+prompt("---------- Lựa chọn ----------\n" +
+                "1. Bạn tự chọn số \n" +
+                "2. Tôi sẽ chọn số giúp bạn bằng random \n"
+        );
+
+        if(n===1){
+          document.getElementById("numberSoXo").style.display="block";
+        }else if(n===2){
+          let arr = [];
+          while (arr.length < 6) {
+            arr.push(Math.floor(Math.random() * 99) + 1);
+          }
+          let ve = new Ticket(...arr);
+          this.listTicket.push(ve);
+          this.displayTickets();
+        }
+      }else {
+        document.getElementById("error").innerHTML = "Bạn chỉ được mua tối đa 4 vé!";
+      }
+
+    }
+
+    confirmTicket(){
+      let numbers = this.getNumberTicket();
+      if (!numbers) return;
+      let ve = new Ticket(...numbers);
+      this.listTicket.push(ve);
+      this.displayTickets();
+      document.getElementById("numberSoXo").style.display="none";
+    }
+    displayTickets(){
+      let html = "";
+      this.listTicket.forEach((ve, idx) => {
+        html += `Vé ${idx+1}: ${ve.numbers.join(", ")}<br>`;
+      });
+      document.getElementById("result").innerHTML = html;
+    }
+    ketQuaXoSo(){
+      let ketQua=[];
+      document.getElementById("ketQua").style.display="block";
+      while (ketQua.length < 6) {
+        ketQua.push(Math.floor(Math.random() * 99) + 1);
+      }
+      for (let i = 0; i < 6; i++) {
+        document.getElementById("kq" + (i + 1)).value = ketQua[i];
+      }
+      this.compare(ketQua);
+    }
+    compare(ketQua) {
+      let output = "";
+      this.listTicket.forEach((ve, idx) => {
+        let count = 0;
+        for (let i = ve.numbers.length; i >=0; i--) {
+          if (ve.numbers[i] === ketQua[i]) count++;
+          else break;
+        }
+
+        if (count === 3) output += `Vé ${idx+1}: trúng giải khuyến khích<br>`;
+        else if (count === 4) output += `Vé ${idx+1}: trúng giải ba<br>`;
+        else if (count === 5) output += `Vé ${idx+1}: trúng giải nhì<br>`;
+        else if (count === 6) output += `Vé ${idx+1}: trúng giải đặc biệt<br>`;
+        else output += `Vé ${idx+1}: may mắn lần sau<br>`;
+      });
+      document.getElementById("ketQuaVe").innerHTML = output;
+    }
+  }
+  let manager= new TicketManager();
+</script>
+</body>
+</html>
