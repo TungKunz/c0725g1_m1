@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let a=[7,2,5,3,5,3] ;
+    let b=[7,2,5,4,6,3,5,3];
+    function  missingValue(a,b){
+        let result=[];
+        for (let i = 0; i < b.length; i++) {
+            if(!a.includes(b[i])){
+                result.push(b[i]);
+            }
+        }
+        return result;
+    }
+
+    console.log(missingValue(a,b));
+</script>
+</body>
+</html>

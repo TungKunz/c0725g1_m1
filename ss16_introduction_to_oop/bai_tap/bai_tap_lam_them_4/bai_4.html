@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <div>
+        <label for="inputId">ID</label>
+        <input id="inputId" type="text">
+        <label for="inputTen">Tên</label>
+        <input id="inputTen" type="text">
+
+        <label for="inputNSX">Nhà Sản Xuất</label>
+        <input id="inputNSX" type="text">
+
+        <label for="inputPrice">Giá Bán</label>
+        <input id="inputPrice" type="text">
+        <button id="addBtn" style="display: inline-block" onclick="manager.add()">Thêm</button>
+        <button id="saveBtn" style="display: none" onclick="manager.saveProduct()">SAVE</button>
+        <button id="sortBtn" style="display: inline-block" onclick="manager.sortCalculator()">Sắp xếp</button>
+        <p id="error"></p>
+    </div>
+    <div>
+        <h3>Display all Product</h3>
+        <div id="result"></div>
+    </div>
+</div>
+<script>
+    class Calculator {
+        id;
+        name;
+        nsx;
+        price;
+
+        constructor(id, name, nsx, price) {
+            this.id = id;
+            this.name = name;
+            this.nsx = nsx;
+            this.price = price;
+        }
+
+        getId() {
+            return this.id;
+        }
+
+        setId(id) {
+            this.id = id;
+        }
+
+        getName() {
+            return this.name;
+        }
+
+        setName(name) {
+            this.name = name;
+        }
+
+        getNSX() {
+            return this.nsx;
+        }
+
+        setNSX(nsx) {
+            this.nsx = nsx;
+        }
+
+        getPrice() {
+            return this.price;
+        }
+
+        setPrice(price) {
+            this.price = price;
+        }
+
+        toString() {
+            console.log("Mã máy " + this.getId() + " " + "Tên máy " + this.getName() + " " + "Nhà sản xuất " + this.getNSX() + " " + "Giá bán " + this.getPrice());
+        }
+    }
+
+    class CalculatorManager {
+        constructor() {
+            this.listCalculator = [];
+            this.indexEditing = -1;
+        }
+
+        checkId(id) {
+            for (let sp of this.listCalculator) {
+                if (sp.id === id) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        add() {
+
+            let id = document.getElementById("inputId").value.trim();
+            let name = document.getElementById("inputTen").value.trim();
+            let nsx = document.getElementById("inputNSX").value.trim();
+            let price = document.getElementById("inputPrice").value.trim();
+            if (id !== "" && name !== " " && nsx !== " " && price !== " " && !this.checkId(id)) {
+                let calculator = new Calculator(id, name, nsx, price);
+                this.listCalculator.push(calculator);
+                document.getElementById("inputId").value = "";
+                document.getElementById("inputTen").value = "";
+                document.getElementById("inputNSX").value = "";
+                document.getElementById("inputPrice").value = "";
+                this.display();
+            } else {
+                document.getElementById("error").innerHTML = "Bạn không thể để trống hoặc đã có tên trong danh sách, mời nhập lại"
+            }
+        }
+
+        display() {
+            let tableString = `<table border="1" style="border: 1px solid black;border-collapse: collapse;text-align: center">`;
+            tableString += `<tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Nhà Sản Suất</th>
+                            <th>Giá</th>
+                            <th colspan="2">Thao tác</th>
+                            </tr>`
+            for (let i = 0; i < this.listCalculator.length; i++) {
+                tableString += `<tr>
+          <td>${this.listCalculator[i].id}</td>
+          <td>${this.listCalculator[i].name}</td>
+          <td>${this.listCalculator[i].nsx}</td>
+          <td>${this.listCalculator[i].price}</td>
+          <td><button onclick="manager.editProduct(${i})">Sửa</button></td>
+          <td><button onclick="manager.deleteProduct(${i})">Xóa</button></td>
+        </tr>`
+
+            }
+            tableString += "</table>";
+            document.getElementById("result").innerHTML = tableString;
+        }
+
+        editProduct(index) {
+            document.getElementById("inputId").value = this.listCalculator[index].id;
+            document.getElementById("inputTen").value = this.listCalculator[index].name;
+            document.getElementById("inputNSX").value = this.listCalculator[index].nsx;
+            document.getElementById("inputPrice").value = this.listCalculator[index].price;
+            this.indexEditing = index;
+            document.getElementById("saveBtn").style.display = "inline-block";
+            document.getElementById("addBtn").style.display = "none";
+        }
+
+        saveProduct() {
+            let newId = document.getElementById("inputId").value.trim();
+            let newName = document.getElementById("inputTen").value.trim();
+            let newNSX = document.getElementById("inputNSX").value.trim();
+            let newPrice = document.getElementById("inputPrice").value.trim();
+            if (this.indexEditing !== -1 && newName !== "") {
+                this.listCalculator[this.indexEditing].id = newId;
+                this.listCalculator[this.indexEditing].name = newName;
+                this.listCalculator[this.indexEditing].nsx = newNSX;
+                this.listCalculator[this.indexEditing].price = newPrice;
+                document.getElementById("inputId").value = "";
+                document.getElementById("inputTen").value = "";
+                document.getElementById("inputNSX").value = "";
+                document.getElementById("inputPrice").value = "";
+                this.display();
+                document.getElementById("input").value = "";
+                document.getElementById("saveBtn").style.display = "none";
+                document.getElementById("addBtn").style.display = "inline-block";
+                this.indexEditing = -1;
+            }
+
+        }
+
+        deleteProduct(index) {
+            this.listCalculator.splice(index, 1);
+            document.getElementById("inputId").value = "";
+            document.getElementById("inputTen").value = "";
+            document.getElementById("inputNSX").value = "";
+            document.getElementById("inputPrice").value = "";
+            this.display();
+        }
+
+        sortCalculator() {
+            for (let i = 0; i < this.listCalculator.length; i++) {
+                for (let j = i + 1; j < this.listCalculator.length; j++) {
+                    if (parseInt(this.listCalculator[i].price) > parseInt(this.listCalculator[j].price)) {
+                        let temp = this.listCalculator[i];
+                        this.listCalculator[i] = this.listCalculator[j];
+                        this.listCalculator[j] = temp;
+                    }
+                }
+            }
+            this.display();
+        }
+    }
+
+    let manager = new CalculatorManager();
+</script>
+</body>
+</html>

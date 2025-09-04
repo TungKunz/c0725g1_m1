@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  function UCLN(a, b) {
+    while (b !== 0) {
+      let temp = b;
+      b = a % b;
+      a = temp;
+    }
+    return a;
+  }
+  function BCNN(a, b) {
+    return (a * b) / UCLN(a, b);
+  }
+  let a = +prompt("Nhập số a:");
+  let b = +prompt("Nhập số b:");
+
+  console.log("UCLN của", a, "và", b, "là:", UCLN(a, b));
+  console.log("BCNN của", a, "và", b, "là:", BCNN(a, b));
+</script>
+</body>
+</html>

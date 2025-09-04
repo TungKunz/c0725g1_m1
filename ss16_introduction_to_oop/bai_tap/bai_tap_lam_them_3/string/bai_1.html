@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  function inHoaKiTuDau(str){
+    let string= str.trim().split(/\s+/);
+    let result="";
+    for (let i = 0; i < string.length; i++) {
+      string[i]=string[i].toLowerCase();
+      string[i]=string[i][0].toUpperCase() + string[i].slice(1);
+      result+=string[i] + " ";
+    }
+    return result.trim();
+  }
+  let a="hO       vIeT TunG             ";
+  console.log(inHoaKiTuDau(a));
+</script>
+</body>
+</html>

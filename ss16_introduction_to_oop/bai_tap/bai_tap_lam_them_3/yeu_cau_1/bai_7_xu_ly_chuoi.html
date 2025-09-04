@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function daoNguocChuoi(str) {
+        let result = "";
+        for (let i = str.length - 1; i >= 0; i--) {
+            result += str[i];
+        }
+        return result;
+    }
+
+    function chuoiThuong(str) {
+        let result = "";
+        for (let i = 0; i < str.length; i++) {
+            result += str[i].toLowerCase();
+        }
+        return result;
+    }
+
+    function chuoiHoa(str) {
+        let result = "";
+        for (let i = 0; i < str.length; i++) {
+            result += str[i].toUpperCase();
+        }
+        return result;
+    }
+
+    function hoaThuong(str) {
+        let result = "";
+        for (let i = 0; i < str.length; i++) {
+            if (str[i] >= "a" && str[i] <= "z") {
+                result += str[i].toUpperCase();
+            } else if (str[i] >= "A" && str[i] <= "Z") {
+                result += str[i].toLowerCase();
+            } else {
+                result += str[i];
+            }
+        }
+        return result;
+    }
+</script>
+</body>
+</html>

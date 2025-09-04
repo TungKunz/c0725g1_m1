@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  function kiTuKhacNhau(str){
+    let arrString=[];
+    for (let i = 0; i < str.length; i++) {
+      if(!arrString.includes(str[i])){
+        arrString.push(str[i]);
+      }
+    }
+    return arrString.length;
+  }
+  let string="abcbbbcccdbbbaaaabbbccdddd";
+  console.log(kiTuKhacNhau(string));
+</script>
+</body>
+</html>

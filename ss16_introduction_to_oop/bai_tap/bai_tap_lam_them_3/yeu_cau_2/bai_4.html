@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  function switchCaseNumber(n){
+    switch (n){
+      case 1:
+        return "một ";
+      case 2:
+        return "hai ";
+      case 3:
+        return "ba ";
+      case 4:
+        return "bốn ";
+      case 5:
+        return "năm ";
+      case 6:
+        return "sáu ";
+      case 7:
+        return "bảy ";
+      case 8:
+        return "tám ";
+      case 9:
+        return "chín";
+    }
+  }
+  function inputNumber(){
+    let n=+prompt("Nhập n");
+    let str=n.toString();
+    let result="";
+    for (let i = 0; i < str.length; i++) {
+      result+=switchCaseNumber(parseInt(str[i]));
+    }
+    console.log(result);
+  }
+  inputNumber();
+</script>
+</body>
+</html>

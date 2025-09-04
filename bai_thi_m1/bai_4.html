@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <div>
+        <label for="inputId">Mã</label>
+        <input id="inputId" type="text">
+        <label for="inputTen">Tên</label>
+        <input id="inputTen" type="text">
+
+        <label for="inputNSX">Hãng Sản Xuất</label>
+        <input id="inputNSX" type="text">
+
+        <label for="inputPrice">Giá Bán</label>
+        <input id="inputPrice" type="text">
+        <button id="addBtn" style="display: inline-block" onclick="quanLy.them();quanLy.sapXepTheoTen()">Thêm</button>
+        <button id="saveBtn" style="display: none" onclick="quanLy.saveProduct()">SAVE</button>
+        <p id="error"></p>
+    </div>
+    <div>
+        <h3>Display all Product</h3>
+        <div id="result"></div>
+    </div>
+</div>
+<script>
+    class DienThoai {
+        ma;
+        ten;
+        hangSanXuat;
+        gia;
+
+        constructor(ma, ten, hangSanXuat, gia) {
+            this.ma = ma;
+            this.ten = ten;
+            this.hangSanXuat = hangSanXuat;
+            this.gia = gia;
+        }
+
+        getMa() {
+            return this.ma;
+        }
+
+        setMa(ma) {
+            this.ma = ma;
+        }
+
+        getTen() {
+            return this.ten;
+        }
+
+        setName(ten) {
+            this.ten = ten;
+        }
+
+        getHangSanXuat() {
+            return this.hangSanXuat;
+        }
+
+        setHangSanXuat(hangSanXuat) {
+            this.hangSanXuat = hangSanXuat;
+        }
+
+        getGia() {
+            return this.gia;
+        }
+
+        setGia(gia) {
+            this.gia = gia;
+        }
+
+        toString() {
+            console.log("Mã máy " + this.getMa() + " " + "Tên máy " + this.getTen() + " " + "Nhà sản xuất " + this.getHangSanXuat() + " " + "Giá bán " + this.getGia());
+        }
+    }
+
+    class QuanLyDienThoai {
+        constructor() {
+            this.danhSachDienThoai = [];
+            this.viTri = -1;
+        }
+
+        kiemTraMa(ma) {
+            for (let sp of this.danhSachDienThoai) {
+                if (sp.ma === ma) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        them() {
+
+            let ma = document.getElementById("inputId").value.trim();
+            let ten = document.getElementById("inputTen").value.trim();
+            let hangSanXuat = document.getElementById("inputNSX").value.trim();
+            let gia = document.getElementById("inputPrice").value.trim();
+            if (ma !== "" && ten !== " " && hangSanXuat !== " " && gia !== " " && !this.kiemTraMa(ma)) {
+                let dienThoai = new DienThoai(ma, ten, hangSanXuat, gia);
+                this.danhSachDienThoai.push(dienThoai);
+                document.getElementById("inputId").value = "";
+                document.getElementById("inputTen").value = "";
+                document.getElementById("inputNSX").value = "";
+                document.getElementById("inputPrice").value = "";
+                this.hienThi();
+            } else {
+                document.getElementById("error").innerHTML = "Bạn không thể để trống hoặc đã có tên trong danh sách, mời nhập lại"
+            }
+        }
+
+        hienThi() {
+            let tableString = `<table border="1" style="border: 1px solid black;border-collapse: collapse;text-align: center">`;
+            tableString += `<tr>
+                            <th>Mã</th>
+                            <th>Tên</th>
+                            <th>Hãng Sản Suất</th>
+                            <th>Giá</th>
+                            <th colspan="2">Thao tác</th>
+                            </tr>`
+            for (let i = 0; i < this.danhSachDienThoai.length; i++) {
+                tableString += `<tr>
+          <td>${this.danhSachDienThoai[i].ma}</td>
+          <td>${this.danhSachDienThoai[i].ten}</td>
+          <td>${this.danhSachDienThoai[i].hangSanXuat}</td>
+          <td>${this.danhSachDienThoai[i].gia}</td>
+          <td><button onclick="quanLy.editProduct(${i})">Sửa</button></td>
+          <td><button onclick="quanLy.deleteProduct(${i})">Xóa</button></td>
+        </tr>`
+
+            }
+            tableString += "</table>";
+            document.getElementById("result").innerHTML = tableString;
+        }
+
+        editProduct(index) {
+            document.getElementById("inputId").value = this.danhSachDienThoai[index].ma;
+            document.getElementById("inputTen").value = this.danhSachDienThoai[index].ten;
+            document.getElementById("inputNSX").value = this.danhSachDienThoai[index].hangSanXuat;
+            document.getElementById("inputPrice").value = this.danhSachDienThoai[index].gia;
+            this.viTri = index;
+            document.getElementById("saveBtn").style.display = "inline-block";
+            document.getElementById("addBtn").style.display = "none";
+        }
+
+        saveProduct() {
+            let newId = document.getElementById("inputId").value.trim();
+            let newName = document.getElementById("inputTen").value.trim();
+            let newNSX = document.getElementById("inputNSX").value.trim();
+            let newPrice = document.getElementById("inputPrice").value.trim();
+            if (this.indexEditing !== -1 && newName !== "") {
+                this.danhSachDienThoai[this.viTri].ma = newId;
+                this.danhSachDienThoai[this.viTri].ten = newName;
+                this.danhSachDienThoai[this.viTri].hangSanXuat = newNSX;
+                this.danhSachDienThoai[this.viTri].gia = newPrice;
+                document.getElementById("inputId").value = "";
+                document.getElementById("inputTen").value = "";
+                document.getElementById("inputNSX").value = "";
+                document.getElementById("inputPrice").value = "";
+                this.hienThi();
+                document.getElementById("input").value = "";
+                document.getElementById("saveBtn").style.display = "none";
+                document.getElementById("addBtn").style.display = "inline-block";
+                this.indexEditing = -1;
+            }
+
+        }
+
+        deleteProduct(index) {
+            this.danhSachDienThoai.splice(index, 1);
+            document.getElementById("inputId").value = "";
+            document.getElementById("inputTen").value = "";
+            document.getElementById("inputNSX").value = "";
+            document.getElementById("inputPrice").value = "";
+            this.hienThi();
+        }
+
+        sapXepTheoTen() {
+            for (let i = 0; i < this.danhSachDienThoai.length; i++) {
+                for (let j = i + 1; j < this.danhSachDienThoai.length; j++) {
+                    if (this.danhSachDienThoai[i].ten.toUpperCase() > this.danhSachDienThoai[j].ten.toUpperCase()) {
+                        let temp = this.danhSachDienThoai[i];
+                        this.danhSachDienThoai[i] = this.danhSachDienThoai[j];
+                        this.danhSachDienThoai[j] = temp;
+                    }
+                }
+            }
+            this.hienThi();
+        }
+    }
+
+    let quanLy = new QuanLyDienThoai();
+</script>
+</body>
+</html>

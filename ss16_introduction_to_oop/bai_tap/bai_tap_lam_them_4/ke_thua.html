@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  // Lớp cha
+  class MonHoc {
+    constructor(tenMon, maMon) {
+      this.tenMon = tenMon;
+      this.maMon = maMon;
+    }
+
+    hienThi() {
+      console.log(`${this.tenMon} - ${this.maMon}`);
+    }
+  }
+
+  // Lớp con kế thừa
+  class MonHocJava extends MonHoc {
+    constructor(tenMon, maMon, diemThucHanh) {
+      super(tenMon, maMon); // gọi constructor lớp cha
+      this.diemThucHanh = diemThucHanh;
+    }
+
+    hienThiDiem() {
+      console.log(`Điểm thực hành: ${this.diemThucHanh}`);
+    }
+  }
+
+  let java = new MonHocJava("Lập trình Java", "JAVA101", 9);
+  java.hienThi();       // gọi phương thức kế thừa từ lớp cha
+  java.hienThiDiem();   // gọi phương thức riêng của lớp con
+
+</script>
+</body>
+</html>

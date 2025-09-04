@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+  function creatArray(){
+    let arr=[];
+    let row=+prompt("Nhập số dòng");
+    let col=+prompt("Nhập số cột");
+    for (let i=0;i<row;i++){
+      arr[i]=[];
+      for (let j=0;j<col;j++){
+        arr[i][j]= +prompt("nhập giá trị");
+      }
+    }
+    return arr;
+  }
+  function checkPrime(a){
+    if(a<2){
+      return false;
+    }
+    for (let i = 2; i <= Math.sqrt(a); i++){
+      if(a%i===0){
+        return false
+      }
+    }
+    return true;
+  }
+  function listPrime(){
+    let array=creatArray();
+    let newArray=[]
+    for (let i = 0; i < array.length; i++) {
+      for (let j = 0; j < array[i].length; j++) {
+        if(checkPrime(array[i][j])){
+          newArray.push(array[i][j])
+        }
+      }
+    }
+    console.log(newArray.length);
+  }
+  listPrime();
+</script>
+</body>
+</html>

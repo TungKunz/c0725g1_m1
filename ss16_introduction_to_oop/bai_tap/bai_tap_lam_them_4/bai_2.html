@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let string = "     Tung  ";
+
+    function checkString(str) {
+        let arr = [];
+        let string = str.trim().split(/\s+/);
+        if (string.length===0) {
+            return arr.push([0, 0]);
+        }
+        let count1 = 0;
+        let count2 = 0;
+        for (let i = 0; i < str.length; i++) {
+            if (str[i] >= "a" && str[i] <= "z") {
+                count1++;
+            } else if (str[i] >= "A" && str[i] <= "Z") {
+                count2++;
+            }
+        }
+        arr.push([count2, count1]);
+        return arr;
+    }
+
+    console.log(checkString(string));
+</script>
+</body>
+</html>

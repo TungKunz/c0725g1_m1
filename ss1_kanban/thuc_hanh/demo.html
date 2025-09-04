@@ -5,43 +5,66 @@
     <title>Title</title>
 </head>
 <body>
+<div>Tùng</div>
+<!--<script>-->
+
+<!--    function kangaroo(x1, v1, x2, v2) {-->
+<!--        if(x2>x1 && v2>v1 || x1 > x2 && v1 > v2){-->
+<!--            return "NO";-->
+<!--        }-->
+<!--        if (v1 === v2) {-->
+<!--            return x1 === x2 ? "YES" : "NO";-->
+<!--        }-->
+<!--        if(x2>x1){-->
+<!--            while(true){-->
+<!--                x1= x1+v1 ;-->
+<!--                x2= x2+v2;-->
+<!--                if(x1===x2){-->
+<!--                    return "YES";-->
+<!--                }-->
+<!--                if(x1>x2){-->
+<!--                    return "NO";-->
+<!--                }-->
+<!--            }-->
+<!--        }else if(x1>x2){-->
+<!--            while(true){-->
+<!--                x1=x1+v1;-->
+<!--                x2=x2+v2;-->
+<!--                if(x1===x2){-->
+<!--                    return "YES";-->
+<!--                }-->
+<!--                if(x1<x2){-->
+<!--                    return "NO";-->
+<!--                }-->
+<!--            }-->
+<!--        }else{-->
+<!--            return "YES"-->
+<!--        }-->
+
+<!--    }-->
+
+<!--</script>-->
 <script>
-
-    function kangaroo(x1, v1, x2, v2) {
-        if(x2>x1 && v2>v1 || x1 > x2 && v1 > v2){
-            return "NO";
-        }
-        if (v1 === v2) {
-            return x1 === x2 ? "YES" : "NO";
-        }
-        if(x2>x1){
-            while(true){
-                x1= x1+v1 ;
-                x2= x2+v2;
-                if(x1===x2){
-                    return "YES";
+    function dayOfProgrammer(year) {
+        if (year % 4 === 0){
+            if (year % 100 === 0){
+                if (year % 400 ===0){
+                    return "12.09."+year;
                 }
-                if(x1>x2){
-                    return "NO";
+                else {
+                    return "13.09."+year;
                 }
             }
-        }else if(x1>x2){
-            while(true){
-                x1=x1+v1;
-                x2=x2+v2;
-                if(x1===x2){
-                    return "YES";
-                }
-                if(x1<x2){
-                    return "NO";
-                }
+            else {
+                return "12.09."+year;
             }
-        }else{
-            return "YES"
         }
-
+        else {
+            return "13.09."+year;
+        }
     }
 
+    console.log(dayOfProgrammer(1800))
 </script>
 </body>
 </html>

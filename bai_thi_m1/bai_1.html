@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arr = [];
+    let n;
+    let ketQua = 0;
+    do {
+        n = +prompt("Nhập số lượng");
+    } while (n > 20 || n <= 0 || !Number.isInteger(n))
+    let tongChan = 0;
+    let tongLe = 0;
+    for (let i = 0; i < n; i++) {
+        arr[i] = +prompt("nhập giá trị tại " + i);
+    }
+    for (let i = 0; i < n; i++) {
+        document.write(arr[i] + " ");
+    }
+    for (let i = 0; i < n; i++) {
+        if (arr[i] % 2 === 0) {
+            tongChan += arr[i];
+        } else {
+            tongLe += arr[i];
+        }
+    }
+
+    ketQua = tongChan - tongLe;
+    document.write("<br>")
+    document.write("Kết quả: " + ketQua);
+</script>
+</body>
+</html>

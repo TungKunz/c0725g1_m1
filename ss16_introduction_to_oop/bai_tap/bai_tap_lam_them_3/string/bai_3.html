@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Common Character Count</title>
+</head>
+<body>
+<script>
+    function timKiTuChung(str1,str2){
+        let count=0;
+        let arr=str1.split("");
+        for (let i = 0; i <arr.length; i++) {
+            if(str2.indexOf(arr[i])!==-1){
+                count++;
+                str2=str2.substring(0,i)+str2.substring(i+1);
+            }
+
+        }
+        return count;
+    }
+    let str1="aabaccc";
+    let str2="abca";
+    console.log(timKiTuChung(str1,str2));
+</script>
+</body>
+</html>

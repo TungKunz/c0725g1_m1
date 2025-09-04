@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let a=[];
+  function creatArray(){
+    let row=+prompt("Nhập số dòng");
+    let col=+prompt("Nhập số cột");
+    for (let i=0;i<row;i++){
+      a[i]=[];
+      for (let j=0;j<col;j++){
+        a[i][j]= +prompt("nhập giá trị");
+      }
+    }
+  }
+  function sumArray(a){
+    creatArray();
+    let sum=0;
+    for (let i = 0; i < a.length; i++) {
+      for (let j = 0; j < a[i].length; j++) {
+        if(a[i][j]%2===0){
+          sum+=a[i][j];
+        }
+      }
+    }
+    console.log(sum);
+  }
+  sumArray(a);
+</script>
+</body>
+</html>

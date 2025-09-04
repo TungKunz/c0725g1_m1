@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let array = [1, 5, 6, 23, 8, 47, 10, 3];
+    console.log(findPrime(array));
+    let sortArray = findPrime(array);
+    sortPrime(sortArray)
+    console.log(sortArray);
+
+    function findMax(arr) {
+        let max = arr[0]
+        for (let i = 1; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+        return max;
+    }
+
+    function checkPrime(n) {
+        if (n < 2) {
+            return false;
+        }
+        for (let i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i === 0) {
+                return false
+            }
+        }
+        return true;
+    }
+
+    function arrayIsPrime(number) {
+        let prime = [];
+        for (let i = 2; i <= number; i++) {
+            if (checkPrime(i)) {
+                prime.push(i);
+            }
+        }
+        return prime;
+    }
+
+    function findPrime(arr) {
+        let max = findMax(arr);
+        let prime = arrayIsPrime(max);
+        let array = [];
+        for (let i = 0; i < arr.length; i++) {
+            if (prime.indexOf(arr[i]) !== -1) {
+                array.push(arr[i]);
+            }
+        }
+        return array;
+    }
+
+    function sortPrime(array) {
+        for (let i = 0; i < array.length; i++) {
+            for (let j = i + 1; j < array.length; j++) {
+                if (parseInt(array[i]) > parseInt(array[j])) {
+                    let temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>
